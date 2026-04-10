@@ -1,1 +1,758 @@
-# httpstina.github.io
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz : Braudel, Arrighi e Wallerstein</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Serif+Display:ital@0;1&display=swap');
+
+:root {
+  --rose:    #e8327a;
+  --rose-lt: #fde8f2;
+  --rose-md: #f9b8d8;
+  --plum:    #7c3aed;
+  --plum-lt: #ede9fd;
+  --plum-md: #c4b5fd;
+  --ink:     #1e0a2e;
+  --muted:   #7a6a8a;
+  --surface: #fdf7fb;
+  --card:    #ffffff;
+  --border:  rgba(124,58,237,0.13);
+  --grad: linear-gradient(135deg, #fce4f3 0%, #ede9fd 100%);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  background: var(--surface);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* background deco */
+.bg-deco {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+}
+.bg-deco svg { position: absolute; }
+
+.shell {
+  position: relative; z-index: 1;
+  max-width: 760px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem;
+}
+
+/* HEADER */
+header { text-align: center; margin-bottom: 2.5rem; }
+.header-chip {
+  display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--rose); background: var(--rose-lt);
+  border: 1px solid var(--rose-md); border-radius: 20px; padding: 4px 14px;
+  margin-bottom: 1rem;
+}
+header h1 {
+  font-family: 'DM Serif Display', serif; font-size: 2.1rem; font-weight: 400;
+  color: var(--ink); line-height: 1.2; margin-bottom: 0.5rem;
+}
+header h1 em { color: var(--plum); font-style: italic; }
+header p { font-size: 0.9rem; color: var(--muted); }
+
+/* FILTER BAR */
+.filter-bar { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-bottom: 2.5rem; }
+.filter-btn {
+  padding: 8px 20px; border-radius: 30px; border: 1.5px solid var(--border);
+  background: var(--card); font-size: 13px; font-weight: 500; cursor: pointer;
+  color: var(--muted); transition: all 0.2s; font-family: inherit;
+}
+.filter-btn:hover { border-color: var(--plum-md); color: var(--plum); }
+.filter-btn.fa { background: var(--ink); border-color: var(--ink); color: #fff; }
+.filter-btn.fb { background: var(--rose); border-color: var(--rose); color: #fff; }
+.filter-btn.fc { background: var(--plum); border-color: var(--plum); color: #fff; }
+.filter-btn.fd {
+  background: linear-gradient(135deg, var(--rose), var(--plum));
+  border-color: transparent; color: #fff;
+}
+
+/* START CARD */
+#start-screen { text-align: center; }
+.start-card {
+  background: var(--card); border-radius: 24px; padding: 2.5rem 2rem;
+  border: 1.5px solid var(--border); max-width: 520px; margin: 0 auto 2rem;
+  box-shadow: 0 8px 40px rgba(124,58,237,0.08);
+  position: relative; overflow: hidden;
+}
+.start-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--rose), var(--plum));
+}
+.start-card h2 {
+  font-family: 'DM Serif Display', serif; font-size: 1.35rem; font-weight: 400;
+  margin-bottom: 1rem; color: var(--ink);
+}
+.start-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; margin-bottom: 0.75rem; }
+.author-badges { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
+.badge {
+  font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px;
+  border: 1px solid;
+}
+.badge-b { background: var(--rose-lt); color: var(--rose); border-color: var(--rose-md); }
+.badge-a { background: var(--plum-lt); color: var(--plum); border-color: var(--plum-md); }
+.badge-w {
+  background: linear-gradient(135deg, #fde8f2, #ede9fd);
+  color: #6d28d9; border-color: #c4b5fd;
+}
+.btn-start {
+  display: inline-block; margin-top: 1.75rem; padding: 13px 40px;
+  background: linear-gradient(135deg, var(--rose), var(--plum));
+  color: #fff; border: none; border-radius: 30px; font-size: 15px;
+  font-weight: 600; cursor: pointer; font-family: inherit;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.3);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.btn-start:hover { transform: translateY(-1px); box-shadow: 0 6px 28px rgba(124,58,237,0.38); }
+.btn-start:active { transform: translateY(0); }
+
+/* QUIZ SCREEN */
+#quiz-screen { display: none; }
+
+.progress-wrap { margin-bottom: 1.25rem; }
+.progress-meta { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.progress-meta span { font-size: 13px; color: var(--muted); }
+.progress-bar { height: 6px; background: var(--rose-lt); border-radius: 3px; }
+.progress-fill {
+  height: 6px; border-radius: 3px;
+  background: linear-gradient(90deg, var(--rose), var(--plum));
+  transition: width 0.5s cubic-bezier(.4,0,.2,1);
+}
+
+.q-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.1rem; }
+.author-tag {
+  font-size: 11px; font-weight: 700; padding: 4px 13px; border-radius: 20px;
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.tag-b { background: var(--rose-lt); color: var(--rose); border: 1px solid var(--rose-md); }
+.tag-a { background: var(--plum-lt); color: var(--plum); border: 1px solid var(--plum-md); }
+.tag-w {
+  background: linear-gradient(135deg, #fde8f2, #ede9fd);
+  color: #7c3aed; border: 1px solid #c4b5fd;
+}
+.q-num { font-size: 13px; color: var(--muted); }
+
+.q-card {
+  background: var(--card); border-radius: 20px; padding: 2rem;
+  border: 1.5px solid var(--border); margin-bottom: 1rem;
+  box-shadow: 0 4px 24px rgba(124,58,237,0.07);
+}
+.q-text {
+  font-size: 1rem; font-weight: 500; line-height: 1.7;
+  margin-bottom: 1.5rem; color: var(--ink);
+}
+
+.options { display: flex; flex-direction: column; gap: 10px; }
+.opt {
+  padding: 13px 16px; border: 1.5px solid #ede5f5; border-radius: 12px;
+  background: #fdf8fd; cursor: pointer; text-align: left; font-size: 14px;
+  line-height: 1.5; color: var(--ink); transition: all 0.18s;
+  display: flex; align-items: flex-start; gap: 11px; font-family: inherit;
+}
+.opt:hover:not(:disabled) { border-color: var(--plum-md); background: var(--plum-lt); }
+.opt.correct { background: #f0fdf4; border-color: #4ade80; color: #14532d; }
+.opt.wrong   { background: #fff1f5; border-color: #f472b6; color: #9d174d; }
+.opt.reveal  { background: var(--plum-lt); border-color: var(--plum); color: var(--plum); }
+.opt:disabled { cursor: default; }
+.opt-letter {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; min-width: 24px; border-radius: 50%;
+  background: #ede5f5; color: var(--plum); font-size: 11px; font-weight: 700;
+}
+.opt.correct .opt-letter { background: #4ade80; color: #14532d; }
+.opt.wrong   .opt-letter { background: #f472b6; color: #fff; }
+.opt.reveal  .opt-letter { background: var(--plum); color: #fff; }
+
+.feedback-box {
+  border-radius: 14px; padding: 14px 18px; font-size: 13px; line-height: 1.7;
+  margin-top: 1rem; display: none; border: 1.5px solid;
+}
+.feedback-box.show { display: block; }
+.fb-ok  { background: #f0fdf4; color: #14532d; border-color: #86efac; }
+.fb-bad { background: #fff1f5; color: #9d174d; border-color: #f9a8d4; }
+
+.q-footer { display: flex; justify-content: flex-end; margin-top: 1rem; }
+.btn-next {
+  padding: 11px 28px;
+  background: linear-gradient(135deg, var(--rose), var(--plum));
+  color: #fff; border: none; border-radius: 30px; font-size: 14px;
+  font-weight: 600; cursor: pointer; display: none; font-family: inherit;
+  box-shadow: 0 4px 18px rgba(124,58,237,0.25);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.btn-next:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(124,58,237,0.35); }
+.btn-next.show { display: block; }
+
+/* RESULT SCREEN */
+#result-screen { display: none; text-align: center; }
+.result-card {
+  background: var(--card); border-radius: 24px; padding: 2.5rem 2rem;
+  border: 1.5px solid var(--border); max-width: 540px; margin: 0 auto;
+  box-shadow: 0 8px 40px rgba(124,58,237,0.08);
+  position: relative; overflow: hidden;
+}
+.result-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--rose), var(--plum));
+}
+.score-circle {
+  width: 120px; height: 120px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--rose-lt), var(--plum-lt));
+  border: 2px solid var(--plum-md);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+.score-num { font-family: 'DM Serif Display', serif; font-size: 2.4rem; color: var(--plum); line-height: 1; }
+.score-den { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.result-title {
+  font-family: 'DM Serif Display', serif; font-size: 1.3rem; font-weight: 400;
+  margin-bottom: 0.4rem; color: var(--ink);
+}
+.result-sub { font-size: 0.875rem; color: var(--muted); margin-bottom: 2rem; }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 2rem; }
+.stat-box {
+  padding: 14px; background: var(--surface); border-radius: 14px;
+  border: 1px solid var(--border);
+}
+.stat-num { font-size: 1.5rem; font-weight: 600; }
+.stat-lbl { font-size: 12px; color: var(--muted); margin-top: 3px; }
+
+.breakdown { margin-bottom: 2rem; }
+.breakdown h3 {
+  font-size: 11px; font-weight: 700; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px;
+}
+.brow { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 13px; }
+.brow-label { width: 90px; text-align: right; color: var(--muted); flex-shrink: 0; }
+.brow-track { flex: 1; height: 8px; background: var(--plum-lt); border-radius: 4px; overflow: hidden; }
+.brow-bar { height: 8px; border-radius: 4px; transition: width 0.8s cubic-bezier(.4,0,.2,1); width: 0; }
+.brow-pct { width: 36px; text-align: left; color: var(--muted); flex-shrink: 0; font-size: 12px; }
+
+.btn-restart {
+  padding: 12px 32px;
+  background: linear-gradient(135deg, var(--rose), var(--plum));
+  color: #fff; border: none; border-radius: 30px; font-size: 14px;
+  font-weight: 600; cursor: pointer; font-family: inherit;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.28);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.btn-restart:hover { transform: translateY(-1px); box-shadow: 0 6px 28px rgba(124,58,237,0.38); }
+
+@media (max-width: 480px) {
+  header h1 { font-size: 1.65rem; }
+  .shell { padding: 1.5rem 1rem 3rem; }
+  .q-card { padding: 1.25rem 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- background decorations -->
+<div class="bg-deco">
+  <svg width="520" height="520" style="top:-120px;right:-160px;opacity:0.55" viewBox="0 0 520 520">
+    <circle cx="260" cy="260" r="260" fill="none" stroke="#e8327a" stroke-width="1.5" stroke-dasharray="6 10"/>
+    <circle cx="260" cy="260" r="200" fill="none" stroke="#7c3aed" stroke-width="1" stroke-dasharray="4 14"/>
+    <circle cx="260" cy="260" r="140" fill="none" stroke="#f9b8d8" stroke-width="1.5"/>
+  </svg>
+  <svg width="380" height="380" style="bottom:-80px;left:-100px;opacity:0.45" viewBox="0 0 380 380">
+    <circle cx="190" cy="190" r="190" fill="none" stroke="#c4b5fd" stroke-width="1.5" stroke-dasharray="5 12"/>
+    <circle cx="190" cy="190" r="130" fill="none" stroke="#e8327a" stroke-width="1" stroke-dasharray="3 10"/>
+  </svg>
+  <!-- flower top-left -->
+  <svg width="120" height="120" style="top:60px;left:30px;opacity:0.18" viewBox="0 0 120 120">
+    <g transform="translate(60,60)">
+      <ellipse rx="14" ry="26" fill="#e8327a" transform="rotate(0)"/>
+      <ellipse rx="14" ry="26" fill="#7c3aed" transform="rotate(45)"/>
+      <ellipse rx="14" ry="26" fill="#e8327a" transform="rotate(90)"/>
+      <ellipse rx="14" ry="26" fill="#7c3aed" transform="rotate(135)"/>
+      <circle r="12" fill="#f9b8d8"/>
+    </g>
+  </svg>
+  <!-- flower bottom-right -->
+  <svg width="90" height="90" style="bottom:120px;right:40px;opacity:0.15" viewBox="0 0 90 90">
+    <g transform="translate(45,45)">
+      <ellipse rx="10" ry="20" fill="#7c3aed" transform="rotate(0)"/>
+      <ellipse rx="10" ry="20" fill="#e8327a" transform="rotate(60)"/>
+      <ellipse rx="10" ry="20" fill="#7c3aed" transform="rotate(120)"/>
+      <circle r="9" fill="#c4b5fd"/>
+    </g>
+  </svg>
+  <!-- small dots scatter -->
+  <svg width="200" height="200" style="top:40%;left:5%;opacity:0.12" viewBox="0 0 200 200">
+    <circle cx="20" cy="30" r="5" fill="#e8327a"/>
+    <circle cx="80" cy="10" r="3" fill="#7c3aed"/>
+    <circle cx="150" cy="50" r="6" fill="#f9b8d8"/>
+    <circle cx="50" cy="120" r="4" fill="#c4b5fd"/>
+    <circle cx="170" cy="140" r="3" fill="#e8327a"/>
+    <circle cx="110" cy="180" r="5" fill="#7c3aed"/>
+  </svg>
+  <!-- diamond shapes -->
+  <svg width="60" height="60" style="top:30%;right:6%;opacity:0.14" viewBox="0 0 60 60">
+    <polygon points="30,2 58,30 30,58 2,30" fill="none" stroke="#e8327a" stroke-width="2"/>
+    <polygon points="30,10 50,30 30,50 10,30" fill="none" stroke="#7c3aed" stroke-width="1.5"/>
+  </svg>
+  <svg width="40" height="40" style="top:65%;left:8%;opacity:0.12" viewBox="0 0 40 40">
+    <polygon points="20,2 38,20 20,38 2,20" fill="none" stroke="#7c3aed" stroke-width="2"/>
+  </svg>
+</div>
+
+<div class="shell">
+  <header>
+    <div class="header-chip">Prova I : 14 de abril</div>
+    <h1>Quiz de <em>Geografia</em><br>Econômica Internacional</h1>
+    <p>Braudel · Arrighi · Wallerstein &nbsp;·&nbsp; Nível médio a difícil</p>
+  </header>
+
+  <!-- START -->
+  <div id="start-screen">
+    <div class="filter-bar">
+      <button class="filter-btn fa" id="f-all" onclick="setFilter('all')">Todos (60)</button>
+      <button class="filter-btn" id="f-b" onclick="setFilter('b')">Braudel (20)</button>
+      <button class="filter-btn" id="f-a" onclick="setFilter('a')">Arrighi (20)</button>
+      <button class="filter-btn" id="f-w" onclick="setFilter('w')">Wallerstein (20)</button>
+    </div>
+    <div class="start-card">
+      <h2>O que o professor quer saber</h2>
+      <p>Identificar o <strong>pensamento dos autores</strong>: o que cada um acredita, como cada um explica o capitalismo, o desenvolvimento e a hierarquia global.</p>
+      <p>Sem críticas externas. Apenas: o que Braudel diria? O que Arrighi argumenta? O que Wallerstein afirma?</p>
+      <div class="author-badges">
+        <span class="badge badge-b">Braudel · 20 questões</span>
+        <span class="badge badge-a">Arrighi · 20 questões</span>
+        <span class="badge badge-w">Wallerstein · 20 questões</span>
+      </div>
+      <button class="btn-start" onclick="startQuiz()">Iniciar quiz</button>
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div id="quiz-screen">
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span id="q-num-top">Questão 1 de 60</span>
+        <span id="score-top">0 acertos</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="prog" style="width:0%"></div></div>
+    </div>
+    <div class="q-card">
+      <div class="q-meta">
+        <span class="author-tag tag-b" id="author-tag">Braudel</span>
+        <span class="q-num" id="q-num-side">1/60</span>
+      </div>
+      <p class="q-text" id="q-text"></p>
+      <div class="options" id="opts"></div>
+      <div class="feedback-box" id="feedback"></div>
+    </div>
+    <div class="q-footer">
+      <button class="btn-next" id="btn-next" onclick="nextQ()">Próxima</button>
+    </div>
+  </div>
+
+  <!-- RESULT -->
+  <div id="result-screen">
+    <div class="result-card">
+      <div class="score-circle">
+        <span class="score-num" id="r-num"></span>
+        <span class="score-den" id="r-den"></span>
+      </div>
+      <div class="result-title" id="r-title"></div>
+      <div class="result-sub" id="r-sub"></div>
+      <div class="stats-grid">
+        <div class="stat-box"><div class="stat-num" id="r-ok" style="color:#059669"></div><div class="stat-lbl">Acertos</div></div>
+        <div class="stat-box"><div class="stat-num" id="r-err" style="color:#e8327a"></div><div class="stat-lbl">Erros</div></div>
+        <div class="stat-box"><div class="stat-num" id="r-pct"></div><div class="stat-lbl">Aproveitamento</div></div>
+      </div>
+      <div class="breakdown">
+        <h3>Desempenho por autor</h3>
+        <div class="brow">
+          <span class="brow-label">Braudel</span>
+          <div class="brow-track"><div class="brow-bar" id="bar-b" style="background:var(--rose)"></div></div>
+          <span class="brow-pct" id="pct-b"></span>
+        </div>
+        <div class="brow">
+          <span class="brow-label">Arrighi</span>
+          <div class="brow-track"><div class="brow-bar" id="bar-a" style="background:var(--plum)"></div></div>
+          <span class="brow-pct" id="pct-a"></span>
+        </div>
+        <div class="brow">
+          <span class="brow-label">Wallerstein</span>
+          <div class="brow-track"><div class="brow-bar" id="bar-w" style="background:linear-gradient(90deg,var(--rose),var(--plum))"></div></div>
+          <span class="brow-pct" id="pct-w"></span>
+        </div>
+      </div>
+      <button class="btn-restart" onclick="restart()">Jogar novamente</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const L = ['A','B','C','D'];
+
+const Q = [
+  // BRAUDEL (20)
+  {a:'b',q:'Para Braudel, qual das três camadas da realidade econômica opera ACIMA da economia de mercado, fugindo de suas regras?',
+  opts:['Vida material','Economia de troca transparente','Capitalismo','Comércio de curta distância'],c:2,
+  exp:'Braudel propõe três andares: vida material (base), economia de mercado (meio) e capitalismo (topo). O capitalismo é o antimercado e prospera exatamente onde consegue eliminar ou contornar a concorrência.'},
+
+  {a:'b',q:'O que Braudel chama de "vida material"?',
+  opts:['O conjunto das trocas comerciais registradas em arquivos','Práticas cotidianas rotineiras e inconscientes: alimentação, moradia, hábitos herdados','O mercado de commodities medievais','O sistema financeiro pré-industrial'],c:1,
+  exp:'A vida material é a camada basal da história: hábitos, gestos repetidos automaticamente, o que está fora da consciência clara dos homens. Braudel a chama de o grande ausente da história.'},
+
+  {a:'b',q:'Por que Braudel afirma que o capitalismo NÃO é sinônimo de economia de mercado?',
+  opts:['Porque o capitalismo produz mais do que o mercado','Porque o capitalismo foge da concorrência e busca monopólios, enquanto o mercado é baseado na concorrência','Porque o capitalismo é exclusivo das cidades medievais','Porque o mercado é mais moderno que o capitalismo'],c:1,
+  exp:'Esta é a distinção fundamental de Braudel: o capitalismo é o antimercado. Enquanto o mercado é transparente e concorrencial, o capitalismo opera onde pode eliminar a concorrência e obter lucros extraordinários.'},
+
+  {a:'b',q:'O que Braudel chama de "Economia A" (transparente)?',
+  opts:['O comércio de especiarias com o Oriente','Trocas locais, regulares, previsíveis, com preços conhecidos por todos','O sistema bancário florentino','O comércio atlântico do século XVI'],c:1,
+  exp:'A Economia A é o mercado ordinário, regulado, onde as margens são modestas e todos os participantes conhecem os preços. É o oposto do capitalismo que opera no contramercado.'},
+
+  {a:'b',q:'O que é o contramercado (Economia B) na teoria de Braudel?',
+  opts:['O mercado negro medieval','O espaço dos grandes negociantes que operam fora das regras do mercado ordinário, com assimetria de informação e margens extraordinárias','A economia de subsistência camponesa','O sistema de feiras anuais'],c:1,
+  exp:'O contramercado é onde o capitalismo realmente vive. Os grandes negociantes compram diretamente dos produtores, antecipam colheitas, controlam as duas pontas da cadeia e extraem margens impossíveis no mercado transparente.'},
+
+  {a:'b',q:'Em que condição o capitalismo triunfa historicamente, segundo Braudel?',
+  opts:['Quando promove a livre concorrência entre produtores','Quando se identifica com o Estado, quando ele é o Estado','Quando elimina todas as formas de intervenção estatal','Quando se especializa em uma única atividade produtiva'],c:1,
+  exp:'Esta é uma das teses centrais de Braudel: nas cidades-Estado italianas, na Holanda e na Inglaterra, o capitalismo só triunfou quando a elite mercantil capturou o poder político. Estado e capital se confundem.'},
+
+  {a:'b',q:'O que Braudel entende por "economia-mundo"?',
+  opts:['A economia de todo o planeta','Uma porção do globo que forma um todo econômico coerente e autossuficiente em si mesmo','O conjunto das cidades-Estado italianas','O mercado europeu do século XVIII'],c:1,
+  exp:'Para Braudel, economia-mundo (do alemão Weltwirtschaft) é um espaço econômico com seu próprio polo dominante, fronteiras e hierarquia interna. Podem coexistir várias economias-mundo simultaneamente.'},
+
+  {a:'b',q:'Quais são as três propriedades que Braudel atribui a toda economia-mundo?',
+  opts:['Moeda única, governo central e exército comum','Espaço geográfico com fronteiras, polo central dominante e zonas concêntricas desiguais','Livre comércio, industrialização e democracia','Centro bancário, exército e território colonial'],c:1,
+  exp:'Braudel identifica três leis: toda economia-mundo ocupa um espaço com fronteiras, possui sempre um polo central dominante e se organiza em zonas concêntricas de desigualdade crescente à medida que se afasta do centro.'},
+
+  {a:'b',q:'Como Braudel descreve a sequência histórica dos polos hegemônicos da economia-mundo europeia?',
+  opts:['Roma, Veneza, Londres, Nova York','Veneza, Antuérpia, Gênova, Amsterdã, Londres, Nova York','Paris, Amsterdã, Londres, Berlim','Florença, Lisboa, Madri, Paris'],c:1,
+  exp:'Esta é a sequência braudeliana clássica dos polos da economia-mundo europeia, do século XIV ao XX. Cada polo dominou por um período até ser deslocado pelo seguinte em crises e conflitos.'},
+
+  {a:'b',q:'O que Braudel chama de "descentragem e recentragem" das economias-mundo?',
+  opts:['A migração de camponeses do campo para a cidade','O deslocamento do polo hegemônico de uma cidade/Estado para outra, geralmente em períodos de crise','A redistribuição de renda entre classes sociais','O fim do feudalismo e o início do capitalismo'],c:1,
+  exp:'Descentragem é quando o polo hegemônico perde sua posição; recentragem é quando um novo polo emerge. Para Braudel, esses processos são raros, violentos e ligados a crises econômicas prolongadas.'},
+
+  {a:'b',q:'Segundo Braudel, o que explica a supremacia econômica dos países do Norte europeu no século XVII, em vez do protestantismo como afirma Weber?',
+  opts:['A superioridade racial dos povos nórdicos','O deslocamento do centro de gravidade econômico por razões econômicas, já que os nórdicos saquearam o Mediterrâneo com produtos baratos','A descoberta de minas de prata no norte','A superioridade da tecnologia têxtil holandesa'],c:1,
+  exp:'Braudel refuta Weber diretamente: Amsterdã copiou Veneza, Londres copiou Amsterdã. O triunfo nórdico resultou do deslocamento econômico e em parte da pilhagem sistemática do Mediterrâneo, não de virtudes protestantes.'},
+
+  {a:'b',q:'O que Braudel diz sobre a Revolução Industrial inglesa em relação ao capitalismo?',
+  opts:['A Revolução Industrial criou o capitalismo do zero','O capitalismo já existia há séculos antes; a Revolução Industrial foi uma transformação da base produtiva, não a origem do capitalismo','A Revolução Industrial foi causada pelo protestantismo calvinista','O capitalismo surgiu apenas após a industrialização'],c:1,
+  exp:'Para Braudel, o capitalismo pré-existe à Revolução Industrial por séculos. A industrialização foi uma transformação da base produtiva; o capitalismo como lógica de acumulação no topo da hierarquia é muito mais antigo.'},
+
+  {a:'b',q:'Na análise braudeliana, qual é o papel das feiras e bolsas em comparação com os mercados locais?',
+  opts:['Feiras e bolsas são instrumentos do capitalismo popular, acessíveis a todos','Feiras e bolsas representam um registro superior da economia, dominado pelos grandes negociantes, enquanto mercados locais são o registro inferior','Feiras eram apenas eventos religiosos sem função econômica','Bolsas só existiram a partir do século XIX'],c:1,
+  exp:'Braudel distingue dois registros da economia de mercado: o inferior (mercados, lojas, camelôs) e o superior (feiras internacionais e bolsas). O capitalismo opera preferencialmente no registro superior, onde as margens são maiores.'},
+
+  {a:'b',q:'O que caracteriza o grande negociante capitalista na análise de Braudel, em comparação com o comerciante comum?',
+  opts:['O grande negociante se especializa em um único setor','O grande negociante nunca se especializa: migra para onde está o maior lucro, alternando entre comércio, finanças, terras e indústria','O grande negociante é sempre industrial','O grande negociante atua apenas no mercado local'],c:1,
+  exp:'Esta é uma das observações mais originais de Braudel: o capitalista histórico jamais se especializa. Ele é negociante hoje, banqueiro amanhã, proprietário de terras depois. Sua força é exatamente essa flexibilidade de migrar para onde está o superlucro.'},
+
+  {a:'b',q:'O que Braudel entende por "longue durée" (longa duração)?',
+  opts:['O período de duração de uma guerra específica','Estruturas históricas de lento movimento que persistem por séculos, invisíveis no tempo curto dos eventos','O ciclo de vida de uma empresa capitalista','A duração de um ciclo econômico de Kondratiev'],c:1,
+  exp:'A longa duração é o tempo das estruturas profundas: a vida material, as hierarquias da economia-mundo. Para Braudel, a história econômica só faz sentido nessa escala temporal, não no tempo curto dos eventos.'},
+
+  {a:'b',q:'Segundo Braudel, qual foi a relação entre a Revolução Industrial inglesa e o mundo exterior?',
+  opts:['A Inglaterra se desenvolveu completamente de forma autônoma','A Revolução Industrial só foi possível com a cumplicidade do mundo: mercados externos abertos em cadeia alimentaram a expansão industrial inglesa','A Inglaterra dependeu exclusivamente do comércio com a Índia','A Revolução Industrial foi financiada por capitais franceses'],c:1,
+  exp:'Braudel rejeita as explicações puramente internas E as puramente externas. A potência se forma sobre si mesma mas se reforça pela exploração do mundo exterior. As duas explicações são inextricáveis.'},
+
+  {a:'b',q:'O que Braudel quer dizer quando afirma que o capitalismo não abrange toda a economia?',
+  opts:['O capitalismo é um fenômeno marginal e irrelevante','A tripartição vida material / economia de mercado / capitalismo persiste até hoje: o capitalismo é a camada superior e minoritária, não o sistema econômico inteiro','O capitalismo foi superado pelo socialismo','O capitalismo funciona apenas nas economias centrais'],c:1,
+  exp:'Braudel insiste que a tripartição não é apenas histórica: ela descreve o mundo contemporâneo. Há ainda autoconsumo, há economia de mercado concorrencial e há o capitalismo de alto voo no topo. Os três coexistem.'},
+
+  {a:'b',q:'Para Braudel, o que une o capitalismo histórico ao capitalismo contemporâneo?',
+  opts:['A busca pela livre concorrência','A lógica permanente de acumulação via monopólios, operação em escala mundial e aliança com o Estado: a natureza do capitalismo não mudou radicalmente','A dependência da Revolução Industrial','A especialização crescente dos capitalistas'],c:1,
+  exp:'Braudel conclui A Dinâmica do Capitalismo afirmando que o capitalismo contemporâneo preserva as mesmas características essenciais: busca de monopólio, escala global e cumplicidade com o Estado.'},
+
+  {a:'b',q:'Como Braudel explica por que o capitalismo não floresceu endogenamente na China imperial?',
+  opts:['A China não tinha recursos naturais suficientes','O Estado chinês era estruturalmente hostil ao acúmulo privado de fortunas: famílias ricas eram suspeitas e o verdadeiro capitalismo chinês só floresceu fora da China','A China não tinha acesso ao mar','Os comerciantes chineses eram tecnicamente inferiores'],c:1,
+  exp:'Para Braudel, o Estado Ming/manchu não permitia acumulação familiar multigeracional. O único capitalismo chinês próspero era o da diáspora na Insulíndia, longe do controle estatal.'},
+
+  {a:'b',q:'O que Braudel entende por "zonas concêntricas" da economia-mundo e qual é a condição das margens?',
+  opts:['Zonas de livre comércio criadas por tratados modernos','Núcleo rico e tecnológico, zonas intermediárias e margens periféricas onde, nas palavras de Braudel, a vida evoca o Purgatório ou mesmo o Inferno','Regiões com diferentes tipos de moeda','Divisões administrativas dos impérios coloniais'],c:1,
+  exp:'Braudel descreve as zonas marginais como locais de vida degradada. Nas margens vigoram trabalho servil ou escravo: segunda servidão no Leste europeu, escravidão nas Américas, que o centro necessita para acumular.'},
+
+  // ARRIGHI (20)
+  {a:'a',q:'Qual é a tese central de Arrighi sobre industrialização e convergência de renda no Sul Global?',
+  opts:['A industrialização sempre produz convergência de renda entre Norte e Sul','Houve convergência industrial sem convergência de renda: o hiato de renda permaneceu praticamente igual entre 1960 e 2000 apesar da industrialização do Sul','A industrialização só funciona nos países do Norte','O Sul não se industrializou de forma relevante no século XX'],c:1,
+  exp:'Este é o paradoxo central do texto de 2007: a Tabela 1 mostra que o Sul superou o Norte em grau de industrialização; a Tabela 2 mostra que o hiato de renda Norte-Sul permaneceu em cerca de 4,5% tanto em 1960 quanto em 2000. Quarenta anos de industrialização sem convergência de renda.'},
+
+  {a:'a',q:'O que Arrighi e Drangel (1986) propõem como critério para medir empiricamente a posição de um país na hierarquia da economia-mundo?',
+  opts:['O tamanho do exército nacional','O PNB per capita em relação à média mundial: o comando econômico relativo','O grau de industrialização do país','O volume de exportações de manufaturados'],c:1,
+  exp:'Arrighi e Drangel operacionalizam o conceito de semiperiferia usando o PNB per capita em percentagem da média mundial. Isso capta o quanto os cidadãos de uma jurisdição apropriam dos recursos da economia global.'},
+
+  {a:'a',q:'O que Arrighi chama de "ilusão do desenvolvimento"?',
+  opts:['A crença equivocada de que o capitalismo é um sistema estável','A estratégia de industrialização como caminho para a convergência que é sistematicamente fadada ao fracasso, pois o alvo (atividades centrais) se move antes que o Sul o alcance','A teoria de Rostow sobre as etapas do desenvolvimento','A promessa não cumprida de ajuda externa dos países ricos'],c:1,
+  exp:'A ilusão consiste em que os países do Sul perseguem as atividades centrais de hoje, mas quando chegam lá, essas atividades já foram periferizadas pela concorrência. O alvo sempre se move para a próxima fronteira de monopólio.'},
+
+  {a:'a',q:'Como Arrighi explica o "efeito de composição" que impede a convergência de renda pela industrialização?',
+  opts:['Economias de escala beneficiam apenas os países grandes','Quando poucos países se industrializam os ganhos são reais, mas quando muitos o fazem simultaneamente a concorrência intensa destrói a rentabilidade para todos','A industrialização aumenta desigualdade interna nos países pobres','O comércio exterior sempre prejudica os países em desenvolvimento'],c:1,
+  exp:'O efeito de composição articula Vernon (ciclo do produto) e Schumpeter (destruição criativa): cada país acredita que será o ganhador, mas o sucesso coletivo destrói os retornos que tornavam a industrialização atrativa para os pioneiros.'},
+
+  {a:'a',q:'Qual é a distinção entre "globalização estrutural" e "globalização ideológica" segundo Arrighi?',
+  opts:['Globalização estrutural é recente; ideológica é antiga','Estrutural é o processo histórico real de integração econômica (secular); ideológica é o conjunto de prescrições neoliberais apresentadas como inevitáveis a partir de 1980','Estrutural refere-se à economia; ideológica à cultura','São dois nomes para o mesmo fenômeno'],c:1,
+  exp:'A globalização estrutural tem séculos; a ideológica (Consenso de Washington) emergiu em 1980 como contrarevolução deliberada dos EUA, não como resposta técnica neutra à globalização estrutural.'},
+
+  {a:'a',q:'Por que Arrighi afirma que a virada neoliberal de 1980 foi uma resposta política deliberada dos EUA?',
+  opts:['Porque Reagan era pessoalmente contra o livre mercado','Porque foi uma resposta ao empoderamento político do Sul nos anos 1970 (Vietnã, OPEP, NOEI) que ameaçava o poder americano','Porque o FMI exigiu a mudança','Porque a Europa Ocidental liderou a iniciativa'],c:1,
+  exp:'Arrighi mostra que nos anos 1970 o Sul estava em ascensão política real. A virada neoliberal foi a resposta americana para reverter esse empoderamento: uma contrarevolução geopolítica, não uma reforma técnica.'},
+
+  {a:'a',q:'Quais são as quatro condições que Arrighi identifica como responsáveis pelo sucesso de China e Índia após 1980?',
+  opts:['Democracia liberal, privatização total, abertura comercial plena e ajuda externa','Independência do capital externo, escala continental, participação seletiva na globalização e mão de obra qualificada barata','Adoção do Consenso de Washington, câmbio livre, banco central independente e corte de gastos','Alianças militares com os EUA, acesso preferencial ao mercado americano, ajuda do FMI e privatizações'],c:1,
+  exp:'As quatro condições de Arrighi: evitaram a armadilha da dívida externa; têm escala continental que viabiliza mercado interno; participaram da globalização estrutural nos próprios termos; combinaram qualificação alta com salário baixo via investimento público.'},
+
+  {a:'a',q:'Como Arrighi descreve a função de "válvula de capital" da semiperiferia no sistema capitalista global?',
+  opts:['A semiperiferia financia o déficit dos países centrais','Quando os lucros caem no centro por superlotação de mercados, o capital migra para a semiperiferia em busca de retornos maiores, prolongando os ciclos sem reestruturar o centro','A semiperiferia emite títulos de dívida para o centro','A semiperiferia é o principal destino das exportações do centro'],c:1,
+  exp:'Esta é a função econômica da semiperiferia: ser o escoadouro do capital saturado no centro. Quando a lucratividade cai no Norte, o capital migra para a semiperiferia buscando trabalho mais barato e mercados menos disputados.'},
+
+  {a:'a',q:'O que Arrighi entende por "subimperialismo" da semiperiferia?',
+  opts:['A semiperiferia luta contra o imperialismo do centro','Países semiperiféricos exercem dominação sobre países periféricos, sendo simultaneamente explorados pelo centro e exploradores da periferia','O imperialismo exercido por empresas multinacionais','A política externa agressiva dos países emergentes'],c:1,
+  exp:'O subimperialismo é a terceira função estrutural da semiperiferia. O Brasil, por exemplo, ao mesmo tempo que é subordinado ao centro financeiro global, exerce pressão sobre países mais pobres, replicando a relação de dominação que sofre.'},
+
+  {a:'a',q:'Por que o modelo de sucesso de China e Índia NÃO é facilmente replicável pela maioria dos países do Sul, segundo Arrighi?',
+  opts:['Porque esses países têm tecnologia militar superior','Principalmente pela escala continental única e pela independência prévia do capital externo: condições estruturais que a maioria dos países pequenos não possui','Porque têm culturas mais favoráveis ao trabalho','Porque receberam mais ajuda externa'],c:1,
+  exp:'A escala continental (mercado interno enorme, mão de obra diversificada) e a independência do capital externo construída nos anos 1970 são condições estruturais difíceis de replicar. Países menores não conseguem combinar EOI e mercado interno da mesma forma.'},
+
+  {a:'a',q:'Como o ciclo do produto de Vernon é usado por Arrighi para explicar o fracasso da industrialização do Sul?',
+  opts:['Um ciclo que beneficia sempre os países pobres','Inovações surgem no Norte com capital abundante e quando difundidas ao Sul já estão rotinizadas e sujeitas à intensa concorrência: o Sul chega tarde e encontra retornos já destruídos','Vernon argumenta que o Sul deve se especializar em agricultura','O ciclo mostra que os produtos industriais ficam cada vez mais baratos'],c:1,
+  exp:'Vernon: difusão equivale a rotinização. O Sul chega tarde com margens já destruídas. Além disso, as inovações surgem em condições de capital abundante/trabalho escasso e quando difundidas ao Sul aprofundam as desvantagens locais.'},
+
+  {a:'a',q:'Arrighi cita Galbraith para caracterizar os anos 1990. Qual é essa caracterização?',
+  opts:['Os anos 1990 foram a idade de ouro do capitalismo neoliberal','Os anos 1990 foram a era dourada do socialismo reformado em China e Índia: os países que melhor performaram foram exatamente os que menos seguiram as prescrições neoliberais','Os anos 1990 demonstraram que o FMI sempre tem razão','Os anos 1990 provaram que desenvolvimento só é possível com democracia liberal'],c:1,
+  exp:'Galbraith, endossado por Arrighi: China e Índia cresceram porque não seguiram o Consenso de Washington. Argentina e Rússia, que seguiram fielmente o FMI, sofreram colapsos piores que a Grande Depressão.'},
+
+  {a:'a',q:'Como Arrighi descreve a relação entre ISI (substituição de importações) e EOI (exportações)?',
+  opts:['ISI e EOI são estratégias completamente opostas e incompatíveis','Existe unidade e complementaridade: a ISI bem-sucedida cria a base industrial que viabiliza a EOI; são fases complementares do mesmo processo','ISI sempre falha; só EOI é eficiente','EOI é a etapa inicial e ISI é a etapa avançada'],c:1,
+  exp:'Arrighi desmonta a falsa oposição do Consenso de Washington. A ISI bem-sucedida dos anos 1950-60 foi precisamente o que criou a base para a EOI. A guinada neoliberal de 1980 interrompeu essa dinâmica natural.'},
+
+  {a:'a',q:'O que Arrighi e Drangel afirmam sobre a distribuição da renda mundial no período 1938-1983?',
+  opts:['A distribuição é normal, sem grupos distintos','Existem três grupos claramente separados (centro, semiperiferia, periferia), confirmando que a hierarquia é estrutural e persistente ao longo do tempo','A distribuição é bipolar, sem semiperiferia real','A semiperiferia muda de composição a cada década'],c:1,
+  exp:'A distribuição tri-modal com baixa densidade nas zonas de transição confirma que centro, semiperiferia e periferia são categorias estruturalmente reais. A principal conclusão é que a estratificação é persistente: países raramente mudam de estrato.'},
+
+  {a:'a',q:'Qual é a alternativa ao TINA neoliberal identificada por Arrighi com base na experiência asiática?',
+  opts:['Cortar impostos e privatizar tudo','Competir pela qualidade da força de trabalho (educação, saúde, bem-estar), tornando os trabalhadores mais produtivos em vez de oferecer concessões ao capital','Adotar o câmbio fixo e controlar a inflação acima de tudo','Integrar-se completamente aos mercados financeiros globais'],c:1,
+  exp:'A maior vantagem competitiva da China não foi salário baixo puro: foi mão de obra qualificada barata, produto de décadas de investimento público. Competir pela qualidade da força de trabalho é mais sustentável do que a corrida pelo fundo em concessões ao capital.'},
+
+  {a:'a',q:'Como Arrighi define estruturalmente um país semiperiférico?',
+  opts:['Um país com renda média e democracia instável','Um país que combina, em seu território, atividades econômicas centrais (alto valor agregado, quase-monopólio) e periféricas (baixo valor, plena concorrência) simultaneamente','Um país que exporta apenas commodities agrícolas','Um país em transição do feudalismo ao capitalismo'],c:1,
+  exp:'A semiperiferia não é apenas renda média: é a combinação estrutural de atividades de ambos os tipos no mesmo território. O Brasil tem Embraer e setor financeiro sofisticado (centrais) mas exporta soja e minério de ferro (periféricas) ao mesmo tempo.'},
+
+  {a:'a',q:'Quais são as três funções estruturais que a semiperiferia cumpre para a reprodução do capitalismo global?',
+  opts:['Produção industrial, consumo de massa e exportação de capitais','Amortecimento político (dilui o conflito Norte-Sul), válvula de capital (escoadouro do capital saturado no centro) e subimperialismo (dominação da periferia)','Fornecimento de matérias-primas, mão de obra barata e mercados consumidores','Regulação financeira, arbitragem cambial e gestão da dívida global'],c:1,
+  exp:'Arrighi identifica três funções: amortecimento político (países intermediários evitam polarização radical); válvula de capital (recebe capital fugindo do centro); subimperialismo (exerce dominação sobre países mais pobres).'},
+
+  {a:'a',q:'Por que as "boas políticas" neoliberais estão sujeitas a "retornos decrescentes" à medida que mais países as adotam, segundo Arrighi?',
+  opts:['Porque os funcionários do FMI cometem erros com o tempo','Porque quando um número crescente de países adota as mesmas políticas de abertura simultaneamente, a competição se intensifica e os benefícios para cada um diminuem drasticamente','Porque as políticas neoliberais são boas apenas em países ricos','Porque o livre mercado só funciona em democracias consolidadas'],c:1,
+  exp:'Este argumento ecoa o efeito de composição: a boa política de abertura funciona para pioneiros mas seus benefícios se diluem quando generalizados. É a lógica schumpeteriana aplicada às políticas nacionais de desenvolvimento.'},
+
+  {a:'a',q:'O que distingue a trajetória da Coreia do Sul da trajetória do Brasil na semiperiferia, segundo Arrighi?',
+  opts:['O Brasil é mais democrático que a Coreia do Sul','A Coreia ascendeu aproveitando a janela da Guerra Fria americana; o Brasil industrializou mas não sustentou a ascensão e experimentou reprimarização da pauta exportadora','O Brasil tem mais recursos naturais','A Coreia do Sul nunca foi semiperiférica'],c:1,
+  exp:'A Coreia foi promovida por convite: os EUA financiaram sua industrialização por razões geopolíticas. O Brasil industrializou por ISI mas sem proteger as atividades centrais emergentes e com a abertura neoliberal dos anos 1990 sofreu desindustrialização e reprimarização.'},
+
+  {a:'a',q:'Como Arrighi descreve a crise que a contrarevolução neoliberal americana impôs ao Sul Global nos anos 1980?',
+  opts:['Uma crise benéfica que modernizou as economias do Sul','A estiagem de capital (após o choque Volcker) seguida de crise da dívida, que forçou os países do Sul à submissão ao ajuste estrutural do FMI, destruindo o Estado desenvolvimentista e a dinâmica ISI-EOI','Uma transição natural e necessária para o livre mercado','Uma crise causada pelos erros dos próprios governos do Sul'],c:1,
+  exp:'A sequência: choque Volcker (juros altos nos EUA), reorientação dos fluxos de capital para os EUA, estiagem de capital no Sul, crise da dívida com a moratória mexicana de 1982 e ajuste estrutural forçado. Os efeitos devastadores sobre o Sul foram parte do mecanismo, não acidentes.'},
+
+  // WALLERSTEIN (20)
+  {a:'w',q:'Qual é o argumento central de Wallerstein em "Desenvolvimento: estrela polar ou ilusão?"',
+  opts:['O desenvolvimento nacional é possível para todos com as políticas corretas','O desenvolvimento nacional é uma ilusão histórica: uma impossibilidade estrutural para a maioria dos países, produzida pelo próprio sistema capitalista que precisa da periferia para funcionar','O neoliberalismo impede o desenvolvimento que seria possível de outro modo','O desenvolvimento só é possível via revolução socialista'],c:1,
+  exp:'A metáfora da estrela polar é precisa: orienta o navegante mas nenhum barco chega até ela. O desenvolvimento serve como bússola ideológica que mobiliza populações e elites do Sul sem nunca ser generalizável, porque o sistema precisa de uma periferia.'},
+
+  {a:'w',q:'Por que Wallerstein critica a teoria da modernização de Rostow como ideologicamente conveniente para o centro?',
+  opts:['Porque Rostow era economista e não sociólogo','Porque localiza o problema do subdesenvolvimento no interior dos países pobres (atraso, má gestão), ignorando a estrutura sistêmica global que o produz','Porque a teoria é muito pessimista sobre o futuro dos países pobres','Porque defende o socialismo como caminho'],c:1,
+  exp:'Rostow afirma que países pobres são apenas atrasados nas etapas universais de desenvolvimento. Para Wallerstein isso é ideologicamente conveniente: localiza o problema no Sul e ignora que a hierarquia global é o produto do próprio sistema.'},
+
+  {a:'w',q:'Quais são os três pilares estruturais do sistema-mundo capitalista segundo Wallerstein?',
+  opts:['Estado-nação, livre mercado e democracia liberal','Divisão hierárquica do trabalho (centro-semiperiferia-periferia), sistema interestatal (Estados soberanos em competição) e geocultura (ideologia legitimadora)','Industrialização, urbanização e secularização','Moeda única, governo mundial e exército global'],c:1,
+  exp:'Os três pilares são interdependentes: a divisão do trabalho produz a hierarquia; o sistema interestatal permite ao capital jogar um Estado contra outro; a geocultura legitima tudo isso sem recurso permanente à força.'},
+
+  {a:'w',q:'Por que o desenvolvimento generalizado de todos os países periféricos é uma impossibilidade estrutural para Wallerstein?',
+  opts:['Porque países periféricos carecem de recursos humanos qualificados','Porque a acumulação de capital no centro depende estruturalmente do diferencial de custo com a periferia: se a periferia se desenvolvesse, esse diferencial desapareceria e com ele os superlucros do centro','Porque as democracias periféricas são muito instáveis','Porque o FMI impede o desenvolvimento'],c:1,
+  exp:'Este é o argumento mais radical de Wallerstein: o sistema capitalista não pode oferecer desenvolvimento generalizado sem destruir a própria lógica que o sustenta. A periferia barata é uma necessidade estrutural, não um acidente histórico.'},
+
+  {a:'w',q:'O que Wallerstein entende por "geocultura" e qual foi a geocultura dominante do capitalismo histórico?',
+  opts:['A cultura geográfica das regiões tropicais','O conjunto de valores, crenças e ideologias que legitimam o sistema-mundo sem recurso permanente à força: o liberalismo foi a geocultura dominante do capitalismo do século XIX ao XX','A política ambiental dos países centrais','A cultura das cidades globais'],c:1,
+  exp:'A geocultura é o sistema de legitimação do capitalismo. O liberalismo, nas versões conservadora (progresso via mercado) e progressista (desenvolvimento via Estado), funcionou como geocultura por séculos, prometendo desenvolvimento e mobilidade dentro do sistema.'},
+
+  {a:'w',q:'O que são os ciclos de Kondratiev e qual é sua importância na análise de Wallerstein?',
+  opts:['Ciclos eleitorais de quatro anos nos países democráticos','Ciclos econômicos de cerca de 50 a 60 anos com fases de expansão (A) e contração (B); na fase B o capital foge da produção para a especulação e desloca atividades para regiões mais baratas','Ciclos climáticos que afetam a produção agrícola mundial','Ciclos de ascensão e queda de impérios militares'],c:1,
+  exp:'Os ciclos de Kondratiev são centrais para Wallerstein: a globalização dos anos 1990 foi a fase B do ciclo iniciado nos anos 1970, com capital fugindo da produção para as finanças e relocalizando atividades industriais. O mecanismo é idêntico ao de fases B anteriores do capitalismo.'},
+
+  {a:'w',q:'Wallerstein identifica apenas três hegemonias completas na história do capitalismo. Quais são elas e qual é o padrão comum?',
+  opts:['Roma, Espanha e Grã-Bretanha; ascendem pela conquista militar','Holanda (século XVII), Grã-Bretanha (século XIX), Estados Unidos (século XX); cada uma derrota um rival em grande conflito, estabelece as regras, extrai benefícios e declina inevitavelmente','França, Alemanha e Japão; ascendem pela industrialização','Veneza, Gênova e Florença; ascendem pelo comércio marítimo'],c:1,
+  exp:'O padrão hegemônico de Wallerstein: derrota de rival em grande conflito, estabelecimento de regras do sistema, extração de benefícios por décadas e declínio gradual à medida que rivais aprendem e os próprios mecanismos hegemônicos corroem as vantagens.'},
+
+  {a:'w',q:'Por que todo hegemon declina inevitavelmente, segundo Wallerstein?',
+  opts:['Por corrupção dos líderes políticos','Os próprios mecanismos que garantem a hegemonia (abertura comercial, difusão tecnológica, estabilidade monetária) acabam transferindo vantagens para os rivais, corroendo a posição dominante','Porque a população central envelhece demograficamente','Por guerras civis internas'],c:1,
+  exp:'Wallerstein mostra que não há exceções: o hegemon ao difundir tecnologia, abrir mercados e manter a ordem transfere as condições para que rivais o superem. A hegemonia carrega em si mesma as sementes de seu próprio declínio.'},
+
+  {a:'w',q:'O que Wallerstein afirma sobre o estágio atual da hegemonia americana?',
+  opts:['Os EUA estão em ascensão hegemônica','Os EUA estão em declínio hegemônico estrutural e irreversível desde os anos 1970: militar (Vietnã, Iraque), econômico (déficit, desindustrialização, dívida) e ideológico (credibilidade da democracia liberal)','Os EUA nunca foram realmente hegemônicos','Os EUA estão em transição para uma nova fase de hegemonia mais forte'],c:1,
+  exp:'Para Wallerstein, o declínio americano é irreversível e começou nos anos 1970. A aparente vitória na Guerra Fria e o boom dos anos 1990 foram superficiais: dependiam de endividamento externo crescente e financeirização, não de vantagem produtiva real.'},
+
+  {a:'w',q:'Qual é a diferença entre crise conjuntural e crise estrutural do sistema-mundo para Wallerstein?',
+  opts:['Crise conjuntural dura mais; estrutural é passageira','Crises conjunturais são resolvidas pelos mecanismos internos do sistema (recessão, ajuste, novo ciclo); crises estruturais acumulam contradições que o sistema não consegue mais resolver internamente','Crise estrutural afeta apenas os países pobres','Crise conjuntural é causada por guerras; estrutural por epidemias'],c:1,
+  exp:'A distinção é fundamental: crises conjunturais são normais no capitalismo e ele as supera. A crise estrutural ocorre quando as tendências seculares atingem seus limites lógicos e o sistema não pode mais se restaurar.'},
+
+  {a:'w',q:'Quais são as três tendências seculares que levam o capitalismo a uma crise estrutural terminal, segundo Wallerstein?',
+  opts:['Queda da natalidade, envelhecimento e migração','Elevação secular dos custos do trabalho sem mais fronteiras baratas; esgotamento das externalidades ambientais; crise fiscal crescente dos Estados','Guerras, epidemias e mudanças tecnológicas','Deflação, desemprego e dívida pública'],c:1,
+  exp:'As três tendências são irreversíveis e convergem: a fronteira geográfica do trabalho barato se esgotou; o planeta não suporta mais a externalização de custos ecológicos; os Estados não conseguem mais financiar as infraestruturas que o capitalismo exige.'},
+
+  {a:'w',q:'O que Wallerstein entende por "bifurcação" do sistema-mundo e quais os dois cenários possíveis?',
+  opts:['Uma divisão política entre países democráticos e autocráticos','Em sistemas complexos em crise, pequenas perturbações podem direcionar o resultado para trajetórias radicalmente distintas: um sistema mais igualitário e democrático OU um mais hierárquico e autoritário que o capitalismo atual','Uma divisão geográfica do mundo em dois blocos econômicos','A separação entre economia real e economia financeira'],c:1,
+  exp:'Wallerstein usa a física de Prigogine: em crise estrutural o futuro é indeterminado. Os dois cenários são: neo-feudalismo global (hierarquia sem as concessões históricas do capitalismo) ou sistema mais igualitário. Qual se materializa depende das escolhas coletivas no presente.'},
+
+  {a:'w',q:'Por que Wallerstein rejeita tanto a visão celebratória quanto a visão crítica simplista da globalização?',
+  opts:['Porque ambas ignoram a questão ambiental','Porque a globalização não é nem novidade dos anos 1990 nem conspiração neoliberal reversível por políticas nacionais: é a fase atual de um processo de 500 anos que só pode ser superado mudando o próprio sistema','Porque ambas são eurocêntricas','Porque nenhuma das duas analisa o papel das multinacionais'],c:1,
+  exp:'Wallerstein mostra que a integração econômica global tem 500 anos. Celebrá-la como libertação dos mercados é ingênuo; criticá-la como novidade reversível por políticas nacionais também é insuficiente. A questão é sistêmica.'},
+
+  {a:'w',q:'O que Wallerstein afirma sobre o papel da social-democracia no capitalismo histórico?',
+  opts:['A social-democracia foi sempre uma ameaça ao capitalismo','A social-democracia foi bem-sucedida durante os trinta gloriosos porque as condições sistêmicas eram excepcionais (expansão econômica, hegemonia americana, pressão soviética): quando essas condições desapareceram, ela entrou em crise estrutural','A social-democracia é o modelo definitivo de organização econômica','A social-democracia sempre fracassou nos países do Sul'],c:1,
+  exp:'Wallerstein mostra que o sucesso social-democrata dependia de condições não-generalizáveis e temporárias. Quando os trinta gloriosos terminaram e a hegemonia americana vacilou, a lógica do sistema se impôs sobre a lógica da redistribuição.'},
+
+  {a:'w',q:'Qual é a unidade de análise correta para compreender o capitalismo segundo Wallerstein, e por que o Estado-nação é insuficiente?',
+  opts:['O Estado-nação é a unidade correta porque é soberano','O sistema-mundo capitalista como totalidade: o Estado-nação é insuficiente porque o comportamento de um país só faz sentido em relação à sua posição numa estrutura global que o precede e o condiciona','A empresa multinacional é a unidade correta','O indivíduo racional é a unidade básica de análise'],c:1,
+  exp:'Esta é a ruptura metodológica fundamental de Wallerstein: os governos africanos "falhavam" não por má gestão, mas por sua posição numa estrutura global. Mudar a unidade de análise de Estado-nação para sistema-mundo é sua contribuição metodológica central.'},
+
+  {a:'w',q:'Como Wallerstein explica por que o período 1945-1970 criou a ilusão de que o projeto de desenvolvimento era viável para o Sul?',
+  opts:['Porque o mundo era mais pacífico nesse período','Três condições excepcionais e temporárias: expansão econômica dos trinta gloriosos, hegemonia americana estabilizadora e pressão da Guerra Fria que forçava concessões ao Sul para evitar alinhamento soviético','Porque o Sul tinha governos mais competentes','Porque as empresas multinacionais investiam mais no Sul'],c:1,
+  exp:'Wallerstein mostra que o sucesso parcial do desenvolvimentismo nesse período dependia de condições sistêmicas excepcionais que desapareceram a partir dos anos 1970. Quando sumiram, o projeto de desenvolvimento revelou sua natureza ilusória.'},
+
+  {a:'w',q:'O que Wallerstein afirma sobre a globalização como trajetória histórica de longo prazo?',
+  opts:['A globalização começou em 1989 com o fim da Guerra Fria','A globalização não é novidade: é uma característica estrutural do capitalismo desde sua origem no século XVI; o capitalismo nasceu como sistema global e sempre exigiu integração de regiões distantes numa divisão internacional do trabalho','A globalização foi criada pelas empresas de tecnologia nos anos 1990','A globalização é um fenômeno recente causado pelo neoliberalismo'],c:1,
+  exp:'Para Wallerstein, a globalização dos anos 1990 é apenas a fase mais recente de um processo secular. O capitalismo sempre foi global: desde o século XVI integrou a Europa, as Américas, a África e a Ásia numa divisão do trabalho hierárquica.'},
+
+  {a:'w',q:'Segundo Wallerstein, a invasão do Iraque pelos EUA em 2003 demonstrou o quê sobre a hegemonia americana?',
+  opts:['Que os EUA são ainda mais poderosos do que antes da Guerra Fria','Que os EUA sem o argumento político da ameaça soviética só lhes restava força militar, e que o uso desta sem construir ordem duradoura confirmou a dominação sem hegemonia: poder sem legitimidade','Que os EUA recuperaram sua hegemonia após o 11 de setembro','Que o multilateralismo ONU ainda funciona como freio ao poder americano'],c:1,
+  exp:'Wallerstein: com o colapso da URSS, os EUA perderam o principal argumento para persuadir aliados. Restou apenas o poder militar. Mas a invasão do Iraque mostrou que podem destruir mas não construir ordem, confirmando que o declínio hegemônico é irreversível.'},
+
+  {a:'w',q:'O que Wallerstein aponta como sinal mais claro de crise estrutural do capitalismo em relação à expansão geográfica?',
+  opts:['O crescimento do comércio global','A incapacidade do capitalismo de continuar se expandindo geograficamente para aliviar suas pressões internas: o planeta foi incorporado e não há mais exterior para explorar','O aumento das migrações internacionais','O crescimento das desigualdades dentro dos países centrais'],c:1,
+  exp:'Por quatro séculos o capitalismo aliviou suas contradições internas expandindo-se para novas regiões. Com o planeta quase inteiramente incorporado, esse mecanismo se esgotou: um sinal claro da crise estrutural.'},
+
+  {a:'w',q:'Como Wallerstein descreve o capitalismo como sistema histórico em relação a outros sistemas sociais anteriores?',
+  opts:['O capitalismo é o sistema econômico natural da humanidade, presente em todas as épocas','O capitalismo é um sistema histórico específico com início, desenvolvimento e eventual fim: ao contrário dos impérios-mundo, baseia-se numa economia-mundo sem governo único, o que lhe confere plasticidade e longevidade','O capitalismo é eterno e não pode ser superado','O capitalismo começou com a Revolução Industrial inglesa'],c:1,
+  exp:'Para Wallerstein, o capitalismo é um sistema histórico com começo, meio e fim. Sua peculiaridade é ser uma economia-mundo (integração econômica ampla) sem um Estado único correspondente (império-mundo), o que lhe dá enorme flexibilidade mas também acumula contradições ao longo do tempo.'},
+];
+
+let pool=[], current=0, score=0, answered=false, filter='all';
+let by={b:{ok:0,tot:0},a:{ok:0,tot:0},w:{ok:0,tot:0}};
+
+function setFilter(f){
+  filter=f;
+  document.getElementById('f-all').className='filter-btn'+(f==='all'?' fa':'');
+  document.getElementById('f-b').className='filter-btn'+(f==='b'?' fb':'');
+  document.getElementById('f-a').className='filter-btn'+(f==='a'?' fc':'');
+  document.getElementById('f-w').className='filter-btn'+(f==='w'?' fd':'');
+}
+
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+function startQuiz(){
+  pool=shuffle(filter==='all'?[...Q]:Q.filter(q=>q.a===filter));
+  current=0;score=0;by={b:{ok:0,tot:0},a:{ok:0,tot:0},w:{ok:0,tot:0}};
+  document.getElementById('start-screen').style.display='none';
+  document.getElementById('quiz-screen').style.display='block';
+  renderQ();
+}
+
+function tagClass(a){return a==='b'?'tag-b':a==='a'?'tag-a':'tag-w';}
+function tagLabel(a){return a==='b'?'Braudel':a==='a'?'Arrighi':'Wallerstein';}
+
+function renderQ(){
+  answered=false;
+  const q=pool[current],total=pool.length,pct=Math.round((current/total)*100);
+  document.getElementById('q-num-top').textContent='Questão '+(current+1)+' de '+total;
+  document.getElementById('score-top').textContent=score+' acertos';
+  document.getElementById('prog').style.width=pct+'%';
+  document.getElementById('author-tag').textContent=tagLabel(q.a);
+  document.getElementById('author-tag').className='author-tag '+tagClass(q.a);
+  document.getElementById('q-num-side').textContent=(current+1)+'/'+total;
+  document.getElementById('q-text').textContent=q.q;
+  const opts=document.getElementById('opts');
+  opts.innerHTML='';
+  q.opts.forEach((txt,i)=>{
+    const btn=document.createElement('button');
+    btn.className='opt';
+    btn.innerHTML='<span class="opt-letter">'+L[i]+'</span><span>'+txt+'</span>';
+    btn.dataset.idx=i;
+    btn.onclick=()=>choose(btn,i,q.c,q.exp,q.a);
+    opts.appendChild(btn);
+  });
+  const fb=document.getElementById('feedback');
+  fb.className='feedback-box';fb.innerHTML='';
+  document.getElementById('btn-next').className='btn-next';
+  document.getElementById('btn-next').textContent=current<pool.length-1?'Próxima':'Ver resultado';
+}
+
+function choose(btn,chosen,correct,exp,author){
+  if(answered)return;
+  answered=true;
+  by[author].tot++;
+  document.querySelectorAll('#opts .opt').forEach(b=>{
+    b.disabled=true;
+    const i=parseInt(b.dataset.idx);
+    if(i===correct) b.classList.add(chosen===correct?'correct':'reveal');
+  });
+  const fb=document.getElementById('feedback');
+  if(chosen===correct){
+    score++;by[author].ok++;
+    btn.classList.remove('reveal');btn.classList.add('correct');
+    fb.innerHTML='<strong>Correto!</strong> '+exp;
+    fb.className='feedback-box fb-ok show';
+  } else {
+    btn.classList.add('wrong');
+    fb.innerHTML='<strong>Incorreto.</strong> '+exp;
+    fb.className='feedback-box fb-bad show';
+  }
+  document.getElementById('score-top').textContent=score+' acertos';
+  document.getElementById('btn-next').className='btn-next show';
+}
+
+function nextQ(){
+  current++;
+  if(current>=pool.length){showResult();return;}
+  renderQ();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showResult(){
+  document.getElementById('quiz-screen').style.display='none';
+  document.getElementById('result-screen').style.display='block';
+  const total=pool.length,pct=Math.round((score/total)*100);
+  document.getElementById('r-num').textContent=score;
+  document.getElementById('r-den').textContent='de '+total;
+  const circle=document.getElementById('score-circle');
+  if(pct>=80){circle.style.background='linear-gradient(135deg,#f0fdf4,#dcfce7)';circle.style.borderColor='#4ade80';}
+  else if(pct>=60){circle.style.background='linear-gradient(135deg,#fef9ee,#fef3c7)';circle.style.borderColor='#fbbf24';}
+  else{circle.style.background='linear-gradient(135deg,#fff1f5,#fde8f2)';circle.style.borderColor='#f472b6';}
+  const labels=[[90,'Excelente! Você domina os três autores.'],[75,'Muito bom! Base sólida para a prova.'],[60,'Razoável: revise os erros antes de quinta-feira.'],[0,'Precisa revisar mais. Releia o material e tente de novo.']];
+  const e=labels.find(([t])=>pct>=t);
+  document.getElementById('r-title').textContent=e[1];
+  document.getElementById('r-sub').textContent=pct+'% de aproveitamento';
+  document.getElementById('r-ok').textContent=score;
+  document.getElementById('r-err').textContent=total-score;
+  document.getElementById('r-pct').textContent=pct+'%';
+  ['b','a','w'].forEach(x=>{
+    const d=by[x];if(!d.tot)return;
+    const p=Math.round((d.ok/d.tot)*100);
+    setTimeout(()=>{document.getElementById('bar-'+x).style.width=p+'%';},100);
+    document.getElementById('pct-'+x).textContent=p+'%';
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function restart(){
+  document.getElementById('result-screen').style.display='none';
+  document.getElementById('start-screen').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
+HTMLEOF
+echo "Linhas: $(wc -l < /home/claude/quiz_rosa.html)"
