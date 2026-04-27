@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz FEB – Completo (Aulas 1–7)</title>
+<style>:root{--ink:#12201e;--muted:#5a6a66;--surface:#f6faf9;--card:#fff;--border:rgba(0,0,0,.1);--c1:#0d6e6e;--c1l:#e0f5f5;--c1m:#7ecece;--c2:#8b1a4a;--c2l:#fce8f0;--c2m:#e8a0bf;--c3:#3a2a8a;--c3l:#eeeaf8;--c3m:#a090d8;--ca:#0d6e6e;--cal:#e0f5f5;--cam:#7ecece}*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;background:var(--surface);color:var(--ink);min-height:100vh;overflow-x:hidden}.shell{max-width:780px;margin:0 auto;padding:2rem 1.25rem 4rem}.part-nav{display:flex;gap:8px;justify-content:center;margin-bottom:2rem;flex-wrap:wrap}.pnav-btn{padding:9px 22px;border-radius:30px;border:1.5px solid var(--border);background:var(--card);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;color:var(--muted);transition:all .2s}.pnav-btn.active-1{background:var(--c1);border-color:var(--c1);color:#fff}.pnav-btn.active-2{background:var(--c2);border-color:var(--c2);color:#fff}.pnav-btn.active-3{background:var(--c3);border-color:var(--c3);color:#fff}.pnav-btn:hover:not(.active-1):not(.active-2):not(.active-3){border-color:#aaa;color:var(--ink)}header{text-align:center;margin-bottom:1.8rem}.header-chip{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border-radius:20px;padding:4px 14px;margin-bottom:.8rem;border:1px solid}.chip-1{color:var(--c1);background:var(--c1l);border-color:var(--c1m)}.chip-2{color:var(--c2);background:var(--c2l);border-color:var(--c2m)}.chip-3{color:var(--c3);background:var(--c3l);border-color:var(--c3m)}header h1{font-family:Georgia,'Times New Roman',serif;font-size:1.9rem;font-weight:400;line-height:1.2;margin-bottom:.4rem}header h1 em{font-style:italic}.em-1{color:var(--c1)}.em-2{color:var(--c2)}.em-3{color:var(--c3)}header p{font-size:.88rem;color:var(--muted)}.filter-bar{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;margin-bottom:1.8rem}.filter-btn{padding:7px 16px;border-radius:30px;border:1.5px solid var(--border);background:var(--card);font-size:12px;font-weight:500;cursor:pointer;color:var(--muted);transition:all .18s;font-family:inherit}.filter-btn:hover{border-color:#aaa;color:var(--ink)}.fb-all{background:var(--ink)!important;border-color:var(--ink)!important;color:#fff!important}.fb-a1{background:var(--c1)!important;border-color:var(--c1)!important;color:#fff!important}.fb-a2{background:#2a7a2a!important;border-color:#2a7a2a!important;color:#fff!important}.fb-a3{background:#7a5c00!important;border-color:#7a5c00!important;color:#fff!important}.fb-a4{background:var(--c2)!important;border-color:var(--c2)!important;color:#fff!important}.fb-a5{background:#6a3a00!important;border-color:#6a3a00!important;color:#fff!important}.fb-a6{background:var(--c3)!important;border-color:var(--c3)!important;color:#fff!important}.fb-a7{background:#5a1a6a!important;border-color:#5a1a6a!important;color:#fff!important}#start-screen{text-align:center}.start-card{background:var(--card);border-radius:22px;padding:2rem 1.75rem;border:1.5px solid var(--border);max-width:520px;margin:0 auto 1.5rem;box-shadow:0 6px 30px rgba(0,0,0,.07);position:relative;overflow:hidden}.start-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}.sc-1::before{background:linear-gradient(90deg,var(--c1),#2a7a2a,#7a5c00)}.sc-2::before{background:linear-gradient(90deg,var(--c2),#6a3a00)}.sc-3::before{background:linear-gradient(90deg,var(--c3),#5a1a6a)}.start-card h2{font-family:Georgia,'Times New Roman',serif;font-size:1.2rem;font-weight:400;margin-bottom:.8rem}.start-card p{font-size:.88rem;color:var(--muted);line-height:1.65;margin-bottom:.5rem}.aula-pills{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:1.2rem}.pill{font-size:11px;font-weight:500;padding:4px 12px;border-radius:16px;border:1px solid}.btn-start{display:inline-block;margin-top:1.5rem;padding:12px 36px;color:#fff;border:none;border-radius:30px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:transform .15s,opacity .15s}.btn-start:hover{transform:translateY(-1px);opacity:.9}.bs-1{background:linear-gradient(135deg,var(--c1),#2a7a2a)}.bs-2{background:linear-gradient(135deg,var(--c2),#7a5c00)}.bs-3{background:linear-gradient(135deg,var(--c3),#5a1a6a)}#quiz-screen{display:none}.progress-wrap{margin-bottom:1.1rem}.progress-meta{display:flex;justify-content:space-between;margin-bottom:6px}.progress-meta span{font-size:12px;color:var(--muted)}.progress-bar{height:5px;background:#ddd;border-radius:3px}.progress-fill{height:5px;border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1)}.pf-1{background:linear-gradient(90deg,var(--c1),#2a7a2a)}.pf-2{background:linear-gradient(90deg,var(--c2),#7a5c00)}.pf-3{background:linear-gradient(90deg,var(--c3),#5a1a6a)}.q-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:.9rem}.author-tag{font-size:11px;font-weight:700;padding:3px 12px;border-radius:16px;letter-spacing:.04em;text-transform:uppercase;border:1px solid}.q-num{font-size:12px;color:var(--muted)}.q-card{background:var(--card);border-radius:18px;padding:1.75rem;border:1.5px solid var(--border);margin-bottom:.9rem;box-shadow:0 3px 18px rgba(0,0,0,.06)}.q-text{font-size:.97rem;font-weight:500;line-height:1.65;margin-bottom:.7rem;color:var(--ink)}.q-instr{font-size:11.5px;color:var(--muted);font-style:italic;margin-bottom:.9rem}.options{display:flex;flex-direction:column;gap:9px}.opt{padding:12px 15px;border:1.5px solid #dde8e8;border-radius:11px;background:#f8fbfb;cursor:pointer;text-align:left;font-size:13.5px;line-height:1.5;color:var(--ink);transition:all .16s;display:flex;align-items:flex-start;gap:10px;font-family:inherit}.opt:hover:not(:disabled){border-color:#aaa;background:#f0f4f4}.opt.selected{border-color:var(--ca);background:var(--cal)}.opt.selected .ol{background:var(--ca);color:#fff}.opt.correct{background:#f0fdf4;border-color:#4ade80;color:#14532d}.opt.correct .ol{background:#4ade80;color:#14532d}.opt.wrong{background:#fff4f0;border-color:#f4a07a;color:#7c2d12}.opt.wrong .ol{background:#f4a07a;color:#fff}.opt.reveal{border-color:var(--ca);background:var(--cal)}.opt.reveal .ol{background:var(--ca);color:#fff}.opt:disabled{cursor:default}.ol{display:inline-flex;align-items:center;justify-content:center;width:23px;height:23px;min-width:23px;border-radius:50%;background:#dde8e8;font-size:10.5px;font-weight:700;color:var(--muted)}.feedback-box{border-radius:12px;padding:13px 16px;font-size:12.5px;line-height:1.65;margin-top:.9rem;display:none;border:1.5px solid}.feedback-box.show{display:block}.fb-ok{background:#f0fdf4;color:#14532d;border-color:#86efac}.fb-bad{background:#fff4f0;color:#7c2d12;border-color:#f4a07a}.q-footer{display:flex;justify-content:flex-end;gap:9px;margin-top:.9rem}.btn-act{padding:10px 26px;color:#fff;border:none;border-radius:28px;font-size:13.5px;font-weight:600;cursor:pointer;display:none;font-family:inherit;transition:transform .14s,opacity .14s}.btn-act:hover{transform:translateY(-1px);opacity:.9}.btn-act.show{display:block}#result-screen{display:none;text-align:center}.result-card{background:var(--card);border-radius:22px;padding:2.2rem 1.75rem;border:1.5px solid var(--border);max-width:520px;margin:0 auto;box-shadow:0 6px 30px rgba(0,0,0,.07);position:relative;overflow:hidden}.result-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}.score-circle{width:110px;height:110px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 1.3rem;border:2px solid}.score-num{font-family:Georgia,'Times New Roman',serif;font-size:2.2rem;line-height:1}.score-den{font-size:11px;color:var(--muted);margin-top:2px}.result-title{font-family:Georgia,'Times New Roman',serif;font-size:1.2rem;font-weight:400;margin-bottom:.35rem}.result-sub{font-size:.85rem;color:var(--muted);margin-bottom:1.6rem}.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:1.6rem}.stat-box{padding:12px;background:var(--surface);border-radius:12px;border:1px solid var(--border)}.stat-num{font-size:1.4rem;font-weight:600}.stat-lbl{font-size:11px;color:var(--muted);margin-top:2px}.breakdown{margin-bottom:1.6rem}.breakdown h3{font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}.brow{display:flex;align-items:center;gap:9px;margin-bottom:8px;font-size:12px}.brow-label{width:52px;text-align:right;color:var(--muted);flex-shrink:0;font-size:11px}.brow-track{flex:1;height:7px;background:#e8eee8;border-radius:4px;overflow:hidden}.brow-bar{height:7px;border-radius:4px;transition:width .8s cubic-bezier(.4,0,.2,1);width:0}.brow-pct{width:34px;text-align:left;color:var(--muted);flex-shrink:0;font-size:11px}.btn-restart{padding:11px 30px;color:#fff;border:none;border-radius:28px;font-size:13.5px;font-weight:600;cursor:pointer;font-family:inherit;margin-top:.5rem}@media(max-width:480px){header h1{font-size:1.55rem}.shell{padding:1.25rem .9rem 3rem}.q-card{padding:1.2rem .9rem}}</style>
+</head>
+<body>
+
+<div class="shell"> <!-- NAV PARTES --> <div class="part-nav"> <button class="pnav-btn active-1" id="pnav-1" onclick="goToPart(1)">Parte 1 · Aulas 1–3</button> <button class="pnav-btn" id="pnav-2" onclick="goToPart(2)">Parte 2 · Aulas 4–5</button> <button class="pnav-btn" id="pnav-3" onclick="goToPart(3)">Parte 3 · Aulas 6–7</button> </div> <header id="hdr"></header> <!-- START --> <div id="start-screen"> <div class="filter-bar" id="filter-bar"></div> <div class="start-card" id="start-card"> <h2>Formação Econômica do Brasil</h2> <p>Questões no modelo da prova: pode haver mais de uma alternativa correta ou nenhuma. Selecione suas respostas e clique em <strong>Confirmar</strong>.</p> <div class="aula-pills" id="aula-pills"></div> <button class="btn-start" id="btn-start" onclick="startQuiz()">Iniciar quiz</button> </div> </div> <!-- QUIZ --> <div id="quiz-screen"> <div class="progress-wrap"> <div class="progress-meta"> <span id="q-num-top">Questão 1</span> <span id="score-top">0 acertos</span> </div> <div class="progress-bar"><div class="progress-fill" id="prog"></div></div> </div> <div class="q-card"> <div class="q-meta"> <span class="author-tag" id="author-tag">Aula 1</span> <span class="q-num" id="q-num-side">1/30</span> </div> <p class="q-text" id="q-text"></p> <p class="q-instr" id="q-instr"></p> <div class="options" id="opts"></div> <div class="feedback-box" id="feedback"></div> </div> <div class="q-footer"> <button class="btn-act show" id="btn-confirm" onclick="confirmAnswer()">Confirmar</button> <button class="btn-act" id="btn-next" onclick="nextQ()">Próxima</button> </div> </div> <!-- RESULT --> <div id="result-screen"> <div class="result-card" id="result-card"> <div class="score-circle" id="score-circle"> <span class="score-num" id="r-num"></span> <span class="score-den" id="r-den"></span> </div> <div class="result-title" id="r-title"></div> <div class="result-sub" id="r-sub"></div> <div class="stats-grid"> <div class="stat-box"><div class="stat-num" id="r-ok" style="color:#059669"></div><div class="stat-lbl">Acertos</div></div> <div class="stat-box"><div class="stat-num" id="r-err" style="color:#b45309"></div><div class="stat-lbl">Erros</div></div> <div class="stat-box"><div class="stat-num" id="r-pct"></div><div class="stat-lbl">Aproveitamento</div></div> </div> <div class="breakdown"> <h3>Desempenho por aula</h3> <div id="brows"></div> </div> <button class="btn-restart" id="btn-restart" onclick="restart()">Jogar novamente</button> </div> </div> </div><!-- /shell -->
+
+<script>
+const Q1 = [
+
+{a:'1',
+q:'Furtado afirma em "O verdadeiro desenvolvimento" que o crescimento econômico se transforma em desenvolvimento apenas quando:',
+opts:[
+  'A taxa de investimento supera o crescimento demográfico por pelo menos uma geração consecutiva.',
+  'O Estado garante a estabilidade monetária e o equilíbrio fiscal como pré-condições da expansão produtiva.',
+  'Prevalecem as forças que lutam pela efetiva melhoria das condições de vida da população, existindo um projeto social subjacente.',
+  'A industrialização alcança setores de alta tecnologia e o país reduz sua dependência de exportações de matérias-primas.'
+],c:[2],
+exp:'<b>Só C está correta.</b> Furtado é categórico: só haverá verdadeiro desenvolvimento quando prevalecerem as forças que lutam pela melhoria das condições de vida do conjunto da população, com um projeto social que oriente o crescimento. As outras descrevem critérios técnicos ou macroeconômicos que Furtado considera insuficientes ou irrelevantes como definição de desenvolvimento.'},
+
+{a:'1',
+q:'Segundo Furtado em "Obstáculos políticos", quais afirmações descrevem corretamente a industrialização brasileira do pós-guerra?',
+opts:[
+  'Foi orientada por um planejamento estatal deliberado voltado à criação de um mercado interno robusto e à industrialização pesada.',
+  'Ocorreu a reboque da defesa dos interesses das oligarquias agroexportadoras, sem estratégia própria de desenvolvimento industrial.',
+  'Gerou crescimento do produto industrial acelerado, mas sem correspondência numa ampliação do mercado interno, dada a concentração de renda.',
+  'Produziu equilíbrio entre os poderes Executivo e Legislativo ao criar novos grupos de interesse com capacidade de pressão institucional.'
+],c:[1,2],
+exp:'<b>B e C estão corretas.</b> B: a industrialização se fez como subproduto da defesa dos interesses agroexportadores, sem projeto nacional deliberado. C: o paradoxo central de Furtado é exatamente esse — crescimento industrial vigoroso sem formação de mercado interno, pela concentração de renda. A está errada porque a industrialização foi exatamente o oposto de planejada. D está errada porque o processo gerou desequilíbrio e impasse institucional crescente, não equilíbrio.'},
+
+{a:'1',
+q:'Sobre o conceito de "verdadeiro desenvolvimento" em Furtado, é correto afirmar:',
+opts:[
+  'O verdadeiro desenvolvimento é identificável pela taxa de crescimento do PIB per capita acima da média mundial por mais de uma década.',
+  'Para Furtado, o crescimento econômico e o desenvolvimento são sinônimos quando ambos são sustentados por mais de vinte anos consecutivos.',
+  'O desenvolvimento genuíno prescinde de projeto político: basta que as forças de mercado operem livremente para que o crescimento beneficie a todos.',
+  'A industrialização é condição suficiente para o verdadeiro desenvolvimento, pois cria empregos urbanos e eleva a renda da população trabalhadora.'
+],c:[],
+exp:'<b>Nenhuma alternativa está correta.</b> A: Furtado rejeita o PIB per capita como definição de desenvolvimento. B: ele distingue crescimento de desenvolvimento — são conceitos diferentes, independentemente da duração. C: é a posição liberal que Furtado critica como ilusão. D: a industrialização brasileira provou que é possível industrializar sem promover desenvolvimento, mantendo a concentração de renda.'},
+
+{a:'1',
+q:'Furtado descreve o impasse político da República brasileira pré-1964 como resultado de:',
+opts:[
+  'A fragilidade das Forças Armadas, que oscilavam entre facções civis rivais sem doutrina política própria consolidada.',
+  'O conflito entre o Executivo, que representava demandas das camadas urbanas industriais, e o Legislativo, dominado pelas oligarquias agrárias latifundiárias.',
+  'A corrupção endêmica dos partidos políticos, que impedia a formação de coalizões estáveis para implementar reformas econômicas.',
+  'A pressão dos credores internacionais, que condicionavam o financiamento externo à manutenção de políticas econômicas conservadoras.'
+],c:[1],
+exp:'<b>Só B está correta.</b> Furtado identifica um descompasso estrutural: o Executivo tornava-se porta-voz das aspirações desenvolvimentistas e urbanas, enquanto o Legislativo preservava a hegemonia das oligarquias agrárias. Esse impasse não era conjuntural; era a expressão da contradição entre a nova estrutura social e as velhas instituições políticas. As outras deslocam a explicação para fatores secundários ou morais.'},
+
+{a:'1',
+q:'Furtado, ao descrever a mudança na estrutura social provocada pela industrialização, aponta quais consequências políticas?',
+opts:[
+  'A emergência de partidos socialistas com base operária organizada, capazes de disputar presidências eleitoralmente com as oligarquias.',
+  'O surgimento de massas urbanas com demandas novas que o sistema político de base oligárquica não conseguia processar institucionalmente.',
+  'Um descompasso crescente entre a estrutura social em transformação e as instituições políticas fundadas no poder agrário patrimonial.',
+  'A consolidação de uma burguesia industrial nacional com projeto autônomo de desenvolvimento em confronto direto com o capital estrangeiro.'
+],c:[1,2],
+exp:'<b>B e C estão corretas.</b> A industrialização criou massas urbanas com demandas novas (B), e o sistema político de base agrária não tinha capacidade de processá-las, gerando o descompasso estrutural (C) que Furtado coloca no centro de sua análise. A está errada: os partidos operários eram minoritários e fragmentados. D idealiza a burguesia industrial brasileira, que na análise de Furtado não tinha projeto autônomo claro.'},
+
+{a:'1',
+q:'Sobre a relação entre dimensão política e desenvolvimento econômico em Furtado, é correto afirmar:',
+opts:[
+  'A dimensão política é importante apenas nas fases iniciais de industrialização; depois, o mercado coordena o processo automaticamente.',
+  'Para Furtado, os tecnocratas isolados das pressões populares são os agentes mais adequados para formular políticas de desenvolvimento racional.',
+  'O avanço social resulta de evolução automática e inercial das forças produtivas, sem necessidade de pressão política organizada da população.',
+  'A dimensão política é subordinada à técnica: sem inovação produtiva prévia, nenhuma pressão política consegue superar o subdesenvolvimento.'
+],c:[],
+exp:'<b>Nenhuma alternativa está correta.</b> Todas contradizem a posição de Furtado. Ele afirma explicitamente que a história demonstra que o avanço social não foi fruto de evolução automática, mas de pressões políticas da população. Ele critica o tecnocratismo, rejeita a convergência automática do mercado e coloca a dimensão política como incontornável, não subordinada à técnica.'},
+
+{a:'1',
+q:'A CEPAL, mencionada por Furtado em "O verdadeiro desenvolvimento", contribuiu para destruir qual dogma enraizado na América Latina?',
+opts:[
+  'A crença de que o protecionismo tarifário era incompatível com o crescimento econômico de longo prazo nas economias periféricas.',
+  'A concepção de que a inflação era sempre resultado de excesso de demanda e devia ser combatida exclusivamente com contração monetária.',
+  'A ilusão do desenvolvimento espontâneo e a mística da estabilidade como precondição do crescimento, revelando que o desenvolvimento exige vontade política.',
+  'A ideia de que as desigualdades regionais eram resultado de diferenças culturais entre as populações de diferentes partes do território.'
+],c:[2],
+exp:'<b>Só C está correta.</b> Furtado afirma que o diagnóstico da CEPAL possibilitou destruir dogmas como "a ilusão do desenvolvimento espontâneo e a mística da estabilidade." O desenvolvimento precisava de vontade política e planejamento. A está errada: a CEPAL era favorável ao protecionismo. B é o debate monetarista-estruturalista, distinto. D é uma leitura cultural que a CEPAL não produziu.'},
+
+{a:'1',
+q:'Segundo Furtado em "O verdadeiro desenvolvimento", o crescimento econômico, no mais das vezes, resulta de:',
+opts:[
+  'Reformas institucionais que redistribuem poder político e permitem a emergência de novos grupos sociais no processo decisório.',
+  'Mera modernização das elites, com adoção de padrões de consumo dos países centrais sem transformação das condições de vida da maioria.',
+  'Crescimento que não possui projeto social subjacente e, portanto, não deve ser confundido com desenvolvimento genuíno.',
+  'Expansão do setor exportador que gera divisas suficientes para financiar a industrialização substitutiva de importações de forma autossustentada.'
+],c:[1,2],
+exp:'<b>B e C estão corretas.</b> Furtado distingue crescimento de desenvolvimento: o crescimento, no mais das vezes, é resultado de mera modernização das elites (B) e não constitui desenvolvimento genuíno justamente por carecer de projeto social (C). A descreve o que seria o desenvolvimento real, não o crescimento criticado. D é uma narrativa da substituição de importações que não é o argumento conceitual aqui.'},
+
+{a:'1',
+q:'Sobre o perfil de uma sociedade, Furtado afirma:',
+opts:[
+  'O perfil de uma sociedade é definido pelo volume e composição de suas exportações, que determinam sua inserção internacional.',
+  'O perfil social é determinado pelo grau de escolaridade média da população, que condiciona a absorção do progresso técnico.',
+  'Uma sociedade é definida pelo valor mercantil da soma de bens e serviços que seus membros consomem e acumulam ao longo do tempo.',
+  'O perfil de uma nação é dado pelo tamanho e eficiência de seu setor público, que determina a qualidade da alocação de recursos.'
+],c:[],
+exp:'<b>Nenhuma alternativa está correta.</b> Furtado afirma o oposto da alternativa C, que é exatamente o que ele critica: "São as pressões políticas da população que definem o perfil de uma sociedade, e não o valor mercantil da soma de bens e serviços por ela consumidos ou acumulados." As demais (A, B, D) substituem a dimensão política por critérios econômicos ou técnicos que Furtado rejeita.'},
+
+{a:'1',
+q:'Furtado afirma que a industrialização brasileira foi feita "sem política de desenvolvimento". Isso significa que:',
+opts:[
+  'O capital estrangeiro controlava setores estratégicos e vetava qualquer planejamento de longo prazo pelo Estado nacional.',
+  'A industrialização ocorreu como subproduto da defesa dos interesses agroexportadores, não como projeto nacional orientado para o desenvolvimento.',
+  'O Estado brasileiro era demasiado fraco institucionalmente para formular e executar políticas econômicas de longo prazo coerentes.',
+  'Os empresários industriais brasileiros resistiam ao planejamento estatal por temor de intervenção em seus mercados e margens de lucro.'
+],c:[1],
+exp:'<b>Só B está correta.</b> Para Furtado, a industrialização se fez a reboque da defesa dos interesses agroexportadores, sem estratégia própria voltada ao desenvolvimento industrial. O Estado protegia o café e a industrialização foi efeito colateral, não projeto. A exagera o papel bloqueador do capital estrangeiro. C reduz o problema à fraqueza institucional. D não tem respaldo no argumento de Furtado.'},
+
+{a:'2',
+q:'Em "Entre Inconformismo e Reformismo", Furtado define o estruturalismo como:',
+opts:[
+  'Uma escola que prioriza a análise das estruturas de mercado e dos oligopólios como causas do atraso econômico periférico.',
+  'Uma abordagem que parte da história para compreender o subdesenvolvimento como fenômeno específico, estudando as relações entre estrutura econômica e estrutura social no sistema centro-periferia.',
+  'Um método que aplica modelos matemáticos às estruturas produtivas para calcular coeficientes de insumo-produto de economias subdesenvolvidas.',
+  'Uma corrente derivada do keynesianismo que adapta os modelos de crescimento de Harrod-Domar às condições das economias periféricas.'
+],c:[1],
+exp:'<b>Só B está correta.</b> Para Furtado, o estruturalismo é uma abordagem histórica e relacional: o subdesenvolvimento só pode ser compreendido a partir da história, como fenômeno específico, estudando as relações entre estruturas econômicas e sociais no sistema centro-periferia. As outras confundem estruturalismo com análise de organização industrial, insumo-produto ou simples adaptação keynesiana.'},
+
+{a:'2',
+q:'Quais afirmações descrevem corretamente o conceito de "dependência cultural" em Furtado?',
+opts:[
+  'A submissão das universidades latino-americanas à agenda temática dos países centrais, bloqueando a produção de conhecimento autônomo.',
+  'A tendência das elites periféricas a adotar os padrões de consumo dos países centrais, dinamizando a demanda sem correspondência no desenvolvimento das forças produtivas locais.',
+  'O processo pelo qual a modernização dos estilos de vida das classes altas periféricas gera demanda por produtos sofisticados produzidos com tecnologia importada.',
+  'A importação de tecnologias incompatíveis com a dotação de fatores locais, gerando desemprego estrutural e bloqueando a industrialização sustentada.'
+],c:[1,2],
+exp:'<b>B e C estão corretas.</b> A dependência cultural em Furtado é a adoção pelas elites periféricas dos padrões de consumo dos países centrais (B), o que dinamiza a demanda por produtos modernos sem que as forças produtivas locais se desenvolvam (C). A descreve dependência intelectual, uma dimensão diferente. D descreve inadequação tecnológica, que é consequência, não definição da dependência cultural.'},
+
+{a:'2',
+q:'Sobre a relação entre acumulação e desenvolvimento em Furtado em "Entre Inconformismo e Reformismo", é correto afirmar:',
+opts:[
+  'A acumulação é o objetivo central do desenvolvimento; o crescimento das forças produtivas é suficiente para garantir progresso social.',
+  'Para Furtado, o PIB per capita é o indicador mais adequado para medir o desenvolvimento porque capta o valor mercantil gerado pela sociedade.',
+  'O subdesenvolvimento resulta de insuficiência de acumulação: países periféricos não acumulam o suficiente para sustentar o crescimento.',
+  'O conceito básico de partida para o estudo do desenvolvimento é a balança comercial, pois a inserção internacional define as possibilidades de acumulação.'
+],c:[],
+exp:'<b>Nenhuma alternativa está correta.</b> A: Furtado rejeita a acumulação como objetivo; ela é vetor, não fim. B: ele critica explicitamente o PIB per capita como indicador do perfil social de uma sociedade. C: inverte o argumento — o subdesenvolvimento não é falta de acumulação, mas acumulação mal orientada e apropriação desigual do excedente. D: o conceito básico para Furtado é o excedente social, não a balança comercial.'},
+
+{a:'2',
+q:'Furtado afirma que "é a estratificação social que permite a emergência do excedente". O que isso significa?',
+opts:[
+  'Sociedades mais desiguais tendem a ter taxas de poupança mais altas porque os ricos consomem proporcionalmente menos do que ganham.',
+  'A divisão da sociedade em grupos com posições diferentes na produção e na apropriação é o que torna possível que parte do produto social fique disponível para usos alternativos à subsistência.',
+  'O excedente social só existe enquanto houver uma classe dominante capaz de exercer coerção direta sobre os trabalhadores e extrair tributos compulsórios.',
+  'A desigualdade de renda é condição necessária para o investimento produtivo porque apenas os grupos ricos dispõem de recursos para mobilizar capital.'
+],c:[1],
+exp:'<b>Só B está correta.</b> Para Furtado, é a estratificação — a divisão entre grupos com diferentes papéis na produção e na apropriação do produto — que permite que parte do produto social não seja consumida imediatamente na subsistência. Essa parte disponível, o excedente, abre caminho à acumulação. A é a tese da poupança diferencial, uma dimensão parcial. C reduz à coerção. D é a justificativa liberal da desigualdade.'},
+
+{a:'2',
+q:'A afirmação de Furtado de que o subdesenvolvimento é "a manifestação da disparidade entre o dinamismo da demanda e o atraso na acumulação reprodutiva" implica:',
+opts:[
+  'As economias periféricas importam mais do que exportam de forma crônica, gerando déficits que drenam as reservas e impedem o investimento produtivo.',
+  'As elites periféricas adotaram padrões de consumo modernos enquanto as forças produtivas locais permaneceram atrasadas, modernizando o consumo sem desenvolver a produção.',
+  'O subdesenvolvimento não é simples atraso superável por etapas lineares, mas uma forma histórica específica de inserção no capitalismo global.',
+  'O crescimento demográfico nas periferias supera a capacidade produtiva local, gerando desemprego estrutural e pressão permanente sobre os salários.'
+],c:[1,2],
+exp:'<b>B e C estão corretas.</b> B capta o mecanismo: modernização do consumo sem desenvolvimento das forças produtivas. C capta a conclusão teórica: o subdesenvolvimento não é fase de atraso, é uma forma histórica específica. A descreve um problema de balanço de pagamentos real, mas que é consequência, não definição. D é a hipótese maltusiana que Furtado não endossa.'},
+
+{a:'2',
+q:'Sobre a polaridade centro-periferia e o subdesenvolvimento, Furtado afirma em "Entre Inconformismo e Reformismo":',
+opts:[
+  'A divisão centro-periferia é uma necessidade estrutural do capitalismo: sem periferia subdesenvolvida, o centro não pode acumular.',
+  'O subdesenvolvimento é resultado de erros de política econômica dos governos periféricos, corrigíveis pela adoção das políticas recomendadas por organismos multilaterais.',
+  'A diferença de renda entre países centrais e periféricos tende naturalmente a se reduzir com o aprofundamento do comércio internacional.',
+  'O subdesenvolvimento é um estágio evolutivo pelo qual todos os países passam antes de atingir a maturidade industrial, como descreveu Rostow.'
+],c:[],
+exp:'<b>Nenhuma alternativa está correta.</b> A: Furtado afirma que a polaridade é um fato histórico, não uma necessidade lógica. B: ele rejeita a explicação por erros internos em favor de uma análise estrutural do sistema global. C: é a tese da convergência neoclássica que Furtado nega, mostrando que o comércio aprofunda a assimetria. D: é exatamente o argumento de Rostow que Furtado combate durante toda sua obra.'},
+
+{a:'2',
+q:'Qual é o "conceito básico para começar" o estudo do desenvolvimento, segundo Furtado em "Entre Inconformismo e Reformismo"?',
+opts:[
+  'O produto interno bruto per capita, que permite comparar o nível de renda e bem-estar material entre países ao longo do tempo.',
+  'A taxa de investimento bruto, que indica a proporção do produto nacional destinada à ampliação da capacidade produtiva instalada.',
+  'O excedente social, suas formas de apropriação e sua utilização, porque é a partir dele que se definem as possibilidades e os limites do desenvolvimento.',
+  'A balança comercial, porque a inserção no sistema internacional determina o padrão de especialização e a capacidade de acumulação interna.'
+],c:[2],
+exp:'<b>Só C está correta.</b> Furtado é explícito: o conceito básico de partida é o excedente social, suas formas de apropriação e utilização. É quem apropria o excedente, para quê e como o usa que determina se haverá desenvolvimento genuíno ou mera modernização concentradora. Os outros indicadores captam dimensões parciais mas não a questão estrutural central.'},
+
+{a:'2',
+q:'A acumulação, segundo Furtado em "Entre Inconformismo e Reformismo", apresenta historicamente quais formas básicas de apropriação do excedente?',
+opts:[
+  'A forma comercial, baseada no intercâmbio mercantil regulado, e a forma industrial, baseada na exploração do trabalho assalariado em fábricas.',
+  'A forma autoritária, em que o excedente é extraído por coerção política ou militar, com prevalência na periferia durante a fase primário-exportadora.',
+  'A forma mercantil, em que o excedente emerge de relações de troca reguladas pelo mercado, com prevalência crescente nos países centrais industrializados.',
+  'A forma pública, em que o Estado captura o excedente via tributos, e a forma privada, em que empresas individuais o acumulam via lucros de mercado.'
+],c:[1,2],
+exp:'<b>B e C estão corretas.</b> Furtado identifica duas formas básicas de apropriação do excedente: a autoritária (B) e a mercantil (C). Na periferia, a forma autoritária prevaleceu amplamente durante a fase primário-exportadora, condicionando todo o processo de acumulação e a estrutura social resultante. A é uma divisão histórica diferente. D confunde com a divisão público/privado, que é ortogonal à de Furtado.'},
+
+{a:'2',
+q:'Sobre o protecionismo e as frustrações do reformista em Furtado, é correto afirmar:',
+opts:[
+  'O protecionismo foi um erro desde o início: a proteção tarifária impediu a concorrência necessária para forçar a modernização das indústrias nacionais.',
+  'Para Furtado, o protecionismo deveria ser permanente: a abertura comercial é sempre prejudicial às economias subdesenvolvidas em qualquer fase.',
+  'As frustrações de Furtado como reformista decorrem principalmente da resistência dos países centrais em transferir tecnologia para a periferia.',
+  'O fracasso do reformismo cepalino foi causado pela má qualidade técnica das políticas propostas, não por obstáculos políticos estruturais.'
+],c:[],
+exp:'<b>Nenhuma alternativa está correta.</b> A: Furtado considerava o protecionismo justificável na fase inicial de industrialização, não um erro desde o início. B: o oposto — ele reconhece que o protecionismo foi mantido por tempo excessivo e que uma segunda fase exigia política ativa de exportações. C: as frustrações eram primariamente internas (risco populista, oligarquias agrárias), não externas. D: Furtado vê os obstáculos como estruturais e políticos, não como problemas técnicos das propostas.'},
+
+{a:'2',
+q:'Furtado relata as "frustrações de um reformista". Qual é o sentido central dessas frustrações?',
+opts:[
+  'Furtado lamenta que os países centrais não tenham cumprido as promessas de transferência de tecnologia e financiamento ao desenvolvimento periférico.',
+  'Furtado reconhece que o risco populista permaneceu presente e que as reformas estruturais necessárias, como a agrária, não foram implementadas no quadro democrático.',
+  'Furtado deplora que a industrialização por substituição de importações tenha gerado inflação incontrolável, forçando ajustes recessivos que reverteram os ganhos sociais.',
+  'Furtado constata que a teoria estruturalista não foi adotada pelos governos latino-americanos, que preferiram seguir as recomendações do FMI.'
+],c:[1],
+exp:'<b>Só B está correta.</b> As frustrações do reformista são a incapacidade de implementar transformações estruturais, como a reforma agrária, dentro do jogo democrático — o risco populista sempre presente impediu a consolidação das reformas e abriu espaço para soluções autoritárias. As outras deslocam a frustração para o plano externo, para problemas técnicos macroeconômicos ou para a recusa dos governos à teoria cepalina.'},
+
+{a:'3',
+q:'Por que Furtado fala em "contatos de cultura" e "quase-inexistência de feudalismo" ao descrever a formação histórica portuguesa?',
+opts:[
+  'Porque Portugal foi conquistado pelos mouros por mais de sete séculos, e a fusão cultural islâmico-cristã acelerou a transição direta para o capitalismo.',
+  'Porque a Reconquista portuguesa foi mais breve e menos violenta que a espanhola, permitindo ao mosaico cultural coexistir de forma harmônica.',
+  'Porque a posição atlântica de Portugal e a Reconquista precoce impediram a consolidação de uma estrutura feudal rígida, favorecendo o surgimento antecipado de uma burguesia comercial.',
+  'Porque Portugal era um reino pequeno e populacionalmente escasso, tornando inviável a organização feudal baseada em servidão da gleba e trabalho cativo.'
+],c:[2],
+exp:'<b>Só C está correta.</b> A posição geográfica aberta ao Atlântico combinada com a Reconquista precoce são os fatores que Furtado destaca: impediram o enraizamento do feudalismo típico do interior europeu e favoreceram o surgimento antecipado de uma burguesia comercial. As outras focam em dimensões secundárias (cultura islâmica, tamanho do reino) que Furtado não coloca no centro.'},
+
+{a:'3',
+q:'Quais características distinguem a burguesia comercial portuguesa da dos demais países europeus, segundo Furtado?',
+opts:[
+  'A burguesia portuguesa surgiu mais cedo e associou-se à coroa numa aliança que orientou o excedente mercantil para a expansão ultramarina em vez de disputá-lo com a nobreza fundiária.',
+  'A burguesia portuguesa era mais cosmopolita por recrutar judeus e cristãos-novos com redes comerciais mediterrâneas, dando-lhe vantagem informacional decisiva.',
+  'Em Portugal, a aliança precoce entre burguesia, coroa e aristocracia produziu uma forma singular de capitalismo mercantil estatal voltado para o exterior.',
+  'A burguesia portuguesa era mais dependente do Estado do que nos outros países porque o pequeno mercado interno a obrigava a buscar proteção real para suas operações.'
+],c:[0,2],
+exp:'<b>A e C estão corretas.</b> A surgência antecipada e a aliança com a coroa que orientou o excedente para o ultramar (A) e a forma singular de capitalismo mercantil estatal que essa aliança produziu (C) são as distinções centrais de Furtado. B é um detalhe real mas secundário no argumento. D descreve dependência quando Furtado vê parceria ativa, não subordinação da burguesia ao Estado.'},
+
+{a:'3',
+q:'Sobre o significado histórico da conquista de Ceuta (1415) segundo Furtado, é correto afirmar:',
+opts:[
+  'Ceuta inaugura a era das grandes conquistas territoriais que definiria a política europeia de expansão imperial pelos quatro séculos seguintes.',
+  'A conquista de Ceuta representou o primeiro exemplo de aliança militar entre Portugal e a Inglaterra, fundamento das relações atlânticas modernas.',
+  'Ceuta foi o momento em que a Europa cristã demonstrou superioridade técnica e organizacional sobre o Islã, acelerando a secularização política mediterrânea.',
+  'A tomada de Ceuta foi motivada principalmente por razões religiosas — a Cruzada africana —, sendo os interesses comerciais consequência secundária.'
+],c:[],
+exp:'<b>Nenhuma alternativa está correta.</b> Para Furtado, Ceuta é o primeiro passo concreto da expansão orientada pelo capital mercantil, abrindo o acesso às rotas africanas. A é uma generalização vaga sem o conteúdo econômico de Furtado. B é historicamente impreciso: a aliança de Windsor é anterior (1386) e Ceuta não é seu marco. C é uma leitura civilizacional que Furtado não endossa. D inverte a lógica: para Furtado, o comercialismo precede e orienta o imperialismo, não o contrário.'},
+
+{a:'3',
+q:'O trinômio "comercialismo, imperialismo, monopólio" em Furtado descreve:',
+opts:[
+  'Três fases cronológicas: o comercialismo veio primeiro, depois o imperialismo militar para garantir as rotas, e finalmente o monopólio como gestão das riquezas acumuladas.',
+  'Três contradições internas da expansão ibérica: a ganância comercial conflitava com os objetivos imperiais da coroa, e ambas com o interesse dos monopólios privados.',
+  'Um projeto econômico articulado em que o comercialismo define o objetivo, o imperialismo o instrumento de força e presença estatal, e o monopólio a forma de extração do excedente.',
+  'Três agentes distintos: o comerciante privado, o Estado imperial e o monopolista financeiro, que disputavam o controle das rotas ultramarinas portuguesas.'
+],c:[2],
+exp:'<b>Só C está correta.</b> O trinômio de Furtado mostra que a expansão portuguesa era um projeto econômico organizado e coerente: o comercialismo define o objetivo (lucro), o imperialismo o instrumento (força e presença estatal), e o monopólio a forma de extração (controle exclusivo das rotas). Os três coexistem desde o início como sistema articulado, não como fases ou contradições.'},
+
+{a:'3',
+q:'A associação entre burguesia comercial e aristocracia agrária em Portugal, segundo Furtado, resultou de:',
+opts:[
+  'Uma convergência de interesses: a nobreza tinha poder político e militar, a burguesia tinha capital e redes, e a expansão ultramarina oferecia a ambas enriquecimento sem conflito interno.',
+  'Uma imposição da coroa, que forçou a nobreza a investir nas expedições marítimas como condição para manter seus privilégios num país com terras agricultáveis escassas.',
+  'O fato de que a expansão marítima foi o projeto que uniu interesses que em outros países europeus permaneceriam conflitantes por muito mais tempo.',
+  'A pressão da Igreja Católica, que incentivou a aliança entre as elites internas para financiar as cruzadas africanas sob a bandeira da evangelização.'
+],c:[0,2],
+exp:'<b>A e C estão corretas.</b> A aliança ocorreu por convergência genuína de interesses (A) — a nobreza obtinha prestígio e participação nos lucros; a burguesia obtinha proteção e ampliação de seu raio de ação — e a expansão marítima foi o projeto que uniu o que em outros países permanecia conflitante (C). B inverte a relação de poder. D superestima o papel da Igreja; Furtado enfatiza os determinantes econômicos.'},
+
+{a:'3',
+q:'Sobre a "revolução burguesa precoce" em Portugal analisada por Furtado, é correto afirmar:',
+opts:[
+  'A revolução burguesa portuguesa foi liderada pelo Estado e não pela iniciativa privada, criando um capitalismo de Estado que antecipou o modelo desenvolvimentista do século XX.',
+  'Em Portugal a revolução ocorreu sem reforma religiosa: a aliança com a Igreja Católica foi mantida, o que limitou a secularização e o individualismo econômico.',
+  'A precocidade da revolução burguesa portuguesa se deve à maior sofisticação técnica e financeira dos comerciantes portugueses em relação aos de outras nações europeias.',
+  'A burguesia portuguesa destruiu as estruturas tradicionais de dominação, assim como ocorreu na França e na Inglaterra, mas o fez de forma mais rápida e menos violenta.'
+],c:[],
+exp:'<b>Nenhuma alternativa está correta.</b> A: exagera o papel autônomo do Estado; o que Furtado mostra é a aliança burguesia-coroa, não protagonismo estatal independente. B é real historicamente mas não é o argumento de Furtado sobre a precocidade. C não tem respaldo em Furtado. D inverte o argumento central: a precocidade portuguesa está exatamente no fato de a burguesia ter ascendido sem destruir as estruturas tradicionais, incorporando-as à lógica mercantil.'},
+
+{a:'3',
+q:'Qual é o papel da expansão comercial portuguesa para a Europa no argumento de Furtado?',
+opts:[
+  'Portugal forneceu o modelo institucional do Estado mercantil copiado pela Holanda, França e Inglaterra em suas próprias expansões coloniais posteriores.',
+  'A expansão lusitana contornou o bloqueio otomano às rotas orientais, ampliou o excedente disponível na Europa e acelerou o processo de acumulação que conduziria à Revolução Industrial.',
+  'Portugal transferiu para a Europa o conhecimento técnico árabe de navegação e astronomia, que era o verdadeiro fundamento das expedições marítimas do século XV.',
+  'A expansão portuguesa foi o primeiro exemplo de capitalismo global no sentido moderno, com empresas operando em três continentes antes de 1500.'
+],c:[1],
+exp:'<b>Só B está correta.</b> Para Furtado, a expansão portuguesa é parte de um processo mais amplo: ao contornar os otomanos e abrir rotas para especiarias e metais preciosos, Portugal inaugurou o ciclo de acumulação que tornaria a Revolução Industrial possível. A é uma hipótese de difusão institucional que Furtado não desenvolve. C superestima a mediação árabe. D é anacronista.'},
+
+{a:'3',
+q:'A lógica mercantil externa que organizou a economia colonial brasileira produziu quais consequências estruturais, segundo Furtado?',
+opts:[
+  'Toda a organização produtiva colonial, da escolha da cultura à estrutura fundiária e ao uso do trabalho escravo, foi determinada pelas necessidades do mercado europeu, não pelas internas.',
+  'A orientação exportadora criou incentivos para a especialização técnica e a inovação produtiva, porque os produtores que aumentassem a produtividade poderiam vender mais.',
+  'A inserção na lógica mercantil externa inviabilizou a formação de um mercado interno e de uma economia diversificada, perpetuando a dependência estrutural.',
+  'A colônia desenvolveu um sistema bancário e de crédito próprio para financiar as operações produtivas, reduzindo a dependência do capital mercantil europeu.'
+],c:[0,2],
+exp:'<b>A e C estão corretas.</b> A organização produtiva inteiramente voltada para fora (A) e a consequente inviabilização do mercado interno e da diversificação (C) são as consequências estruturais centrais que Furtado identifica. B inverte a lógica: a produção escravista voltada à exportação não gerava incentivos à inovação. D é factualmente incorreto: a colônia dependia do capital mercantil europeu, não o substituiu.'},
+
+{a:'3',
+q:'Sobre a diferença entre a expansão mercantil portuguesa e o feudalismo europeu, segundo Furtado, é correto afirmar:',
+opts:[
+  'No feudalismo, o excedente era integralmente reinvestido na expansão da base produtiva agrária; na expansão mercantil, ele foi consumido em guerras e obras de prestígio.',
+  'A expansão mercantil portuguesa dispensou o uso da coerção sobre populações conquistadas, diferenciando-se do feudalismo pela predominância das relações comerciais voluntárias.',
+  'Tanto o feudalismo quanto a expansão mercantil geravam excedente pela renda da terra; a diferença estava apenas na forma como as elites o distribuíam internamente.',
+  'O feudalismo e a expansão mercantil portuguesa tinham a mesma lógica de acumulação: ambos orientavam o excedente para obras de prestígio que consolidavam o poder da classe dominante.'
+],c:[],
+exp:'<b>Nenhuma alternativa está correta.</b> A inverte o argumento: é o feudalismo que consumia o excedente em guerras e prestígio; a expansão mercantil o parcialmente reinvestia em novas expedições. B nega a coerção colonial que Furtado coloca no centro da extração do excedente. C é incorreta: a fonte do excedente difere fundamentalmente — renda territorial no feudalismo, controle de rotas comerciais na expansão mercantil. D nega exatamente a novidade histórica que Furtado identifica na expansão mercantil.'},
+
+{a:'3',
+q:'Furtado situa a conquista de Ceuta e a expansão marítima portuguesa num processo histórico mais amplo. Qual é esse processo?',
+opts:[
+  'O processo de formação dos Estados nacionais modernos na Europa, que usaram a expansão ultramarina para consolidar a autoridade monárquica sobre a nobreza regional.',
+  'O processo de acumulação primitiva europeia que, ao ampliar o excedente disponível via rotas comerciais e exploração colonial, criou as condições materiais da posterior Revolução Industrial.',
+  'O processo de difusão da cultura europeia cristã pelo mundo, em que o comercialismo era apenas o veículo superficial de uma missão civilizatória e evangelizadora mais profunda.',
+  'O processo de transição demográfica europeia, em que a expansão marítima funcionou como válvula de escape para populações excedentes que não encontravam trabalho na agricultura.'
+],c:[1],
+exp:'<b>Só B está correta.</b> Furtado situa a expansão portuguesa no longo processo de acumulação primitiva europeia: a abertura de rotas ampliou o excedente disponível na Europa via comércio desigual e extração colonial, acelerando o processo de acumulação que tornaria a Revolução Industrial possível. A, C e D subordinam a expansão a objetivos políticos, culturais ou demográficos que Furtado não coloca no centro de sua análise.'}
+
+];
+const Q2 = [
+
+{a:'4',
+q:'Segundo Darcy Ribeiro na introdução ao capítulo "Os Brasileiros", o que confere unidade à América Latina?',
+opts:[
+  'A origem ibérica comum das elites colonizadoras e a língua portuguesa ou espanhola que unificou os territórios colonizados.',
+  'A partilha de um mesmo processo histórico de formação: povos surgidos da expansão europeia, da escravidão africana e do encontro com populações nativas, gerando configurações culturais similares de dominação e dependência.',
+  'A adesão comum ao catolicismo romano, que criou instituições jurídicas, familiares e educacionais semelhantes em toda a região.',
+  'A posição geográfica no hemisfério ocidental e o clima tropical ou subtropical, que condicionou padrões similares de organização agrária e produção de commodities.'
+],c:[1],
+exp:'<b>Só B está correta.</b> Para Ribeiro, a unidade latino-americana não é linguística nem religiosa, mas histórico-estrutural: todos esses povos foram formados pelo mesmo processo de expansão europeia, escravidão e encontro violento com populações nativas, produzindo configurações similares de dominação e dependência. As outras reduzem a unidade a fatores culturais, religiosos ou geográficos secundários.'},
+
+{a:'4',
+q:'O conceito de "protocélula Brasil" em Darcy Ribeiro refere-se a:',
+opts:[
+  'A primeira unidade político-administrativa criada pelos portugueses no território, que seria o embrião das capitanias hereditárias.',
+  'A combinação inicial de elementos culturais lusitanos e tupi-guaranis que, através de mestiçagem e deculturação, gerou o núcleo étnico original do povo brasileiro.',
+  'A célula étnica primordial que combinou fragmentos dos patrimônios culturais europeu e indígena dentro de um enquadramento de dominação colonial.',
+  'O primeiro engenho de açúcar instalado no Nordeste, que serviu como modelo para toda a organização produtiva colonial subsequente.'
+],c:[1,2],
+exp:'<b>B e C estão corretas.</b> A protocélula Brasil é a unidade étnica original formada pela combinação de elementos lusitanos e tupi-guaranis (B), gerada dentro do enquadramento de dominação colonial através de mestiçagem e deculturação forçadas (C). A é uma categoria administrativa, não étnica. D descreve uma unidade produtiva econômica, não o conceito de protocélula étnica de Ribeiro.'},
+
+{a:'4',
+q:'Sobre a "ordenação oligárquica" brasileira descrita por Darcy Ribeiro, é correto afirmar:',
+opts:[
+  'A ordenação oligárquica foi superada no Brasil com a industrialização do século XX, que criou uma burguesia industrial capaz de disputar o poder com as oligarquias agrárias.',
+  'Para Ribeiro, a ordenação oligárquica era uma fase transitória do desenvolvimento brasileiro, naturalmente superável pelo processo de modernização econômica.',
+  'A ordenação oligárquica resulta de um pacto democrático entre elites regionais que negociaram a partilha do poder sem recurso à violência ou ao autoritarismo.',
+  'A ordenação oligárquica é, segundo Ribeiro, uma forma de organização social típica de todos os países latino-americanos, sem especificidade histórica brasileira.'
+],c:[],
+exp:'<b>Nenhuma alternativa está correta.</b> A: Ribeiro mostra que a industrialização não eliminou a ordenação oligárquica, apenas a modernizou — a aliança do governo militar com o empresariado e as multinacionais manteve e reforçou o arcaico. B: Ribeiro não vê a oligarquia como fase transitória, mas como estrutura que se reproduz. C: a ordenação oligárquica é, para Ribeiro, marcada pela repressão e pela compressão das forças majoritárias, não por um pacto democrático. D: Ribeiro analisa especificidades históricas de cada configuração; a oligarquia brasileira tem características próprias ligadas à fazenda e ao escravismo.'},
+
+{a:'4',
+q:'Por que Darcy Ribeiro afirma que a Fazenda é a unidade básica sobre a qual se erigiu a ordenação oligárquica brasileira?',
+opts:[
+  'Porque a fazenda foi a maior unidade produtora de riqueza e o principal contribuinte fiscal do Estado colonial e imperial brasileiro.',
+  'Porque a fazenda concentrou em si as funções de produção, dominação social, organização do trabalho, reprodução da hierarquia e controle político da população dependente, tornando-se a célula geradora de toda a estrutura oligárquica.',
+  'Porque a fazenda foi o espaço onde se deu a maior miscigenação racial entre europeus, africanos e indígenas, criando o substrato étnico do povo brasileiro.',
+  'Porque a fazenda funcionou como a principal escola informal do país, transmitindo valores, tradições e formas de sociabilidade às gerações subsequentes.'
+],c:[1],
+exp:'<b>Só B está correta.</b> Para Ribeiro, a fazenda é a unidade básica da ordenação oligárquica porque concentrou simultaneamente a produção, a dominação social, o controle do trabalho e o poder político. O fazendeiro era patrão, juiz, policial e político ao mesmo tempo, tornando a fazenda a célula geradora de toda a hierarquia social brasileira. As outras descrevem funções reais mas parciais da fazenda.'},
+
+{a:'4',
+q:'Quais das compulsões oriundas da natureza comercial da empresa fazendeira brasileira, identificadas por Darcy Ribeiro, estão descritas corretamente?',
+opts:[
+  'A compulsão exportadora: a fazenda produzia exclusivamente para o mercado externo, tornando a economia doméstica inteiramente dependente das flutuações do mercado internacional.',
+  'A compulsão democrática: a necessidade de manter a lealdade dos trabalhadores livres obrigou o fazendeiro a negociar condições e criar espaços de participação política local.',
+  'A compulsão escravista: a busca pelo máximo de lucro com o mínimo de custos levou à perpetuação do trabalho compulsório mesmo após mudanças nas condições do mercado.',
+  'A compulsão concentradora: a lógica comercial da fazenda tendia a concentrar terras, riqueza e poder nas mãos de poucos, excluindo a massa da população do acesso a recursos e direitos.'
+],c:[0,3],
+exp:'<b>A e D estão corretas.</b> A compulsão exportadora (A) e a compulsão concentradora (D) são duas das compulsões que Ribeiro identifica como inerentes à lógica comercial da empresa fazendeira. B é incorreta: a fazenda era autocrática, não democrática; a lealdade era obtida por dependência e coerção. C descreve uma tendência real mas não é uma das compulsões no sentido técnico que Ribeiro usa — a compulsão escravista se manifesta de formas mais amplas que a simples perpetuação do trabalho compulsório.'},
+
+{a:'4',
+q:'Sobre os fatores que conferem unidade à América Latina segundo Darcy Ribeiro, é correto afirmar:',
+opts:[
+  'A unidade latino-americana é fundamentalmente linguística: o espanhol e o português, derivados do latim, criaram uma comunidade cultural coesa.',
+  'A religião católica é o principal fator de unidade: as instituições eclesiásticas foram as únicas a cobrir todo o território desde a colonização.',
+  'A unidade da América Latina é geopolítica: a posição periférica no sistema capitalista mundial cria solidariedade automática entre os países da região.',
+  'A homogeneidade racial dos povos latino-americanos, resultado da mestiçagem generalizada, é o traço que mais os diferencia das demais regiões do mundo.'
+],c:[],
+exp:'<b>Nenhuma alternativa está correta.</b> A: Ribeiro não reduz a unidade à língua; é o processo histórico de formação que a explica. B: a Igreja foi importante mas não é o fator central de unidade em Ribeiro. C: a solidariedade geopolítica automática não é a tese de Ribeiro, que mostra também as tensões internas. D: Ribeiro não afirma homogeneidade racial — ao contrário, mostra a diversidade das configurações históricas e étnicas na América Latina.'},
+
+{a:'4',
+q:'Para Darcy Ribeiro, a ordenação oligárquica brasileira se caracteriza por:',
+opts:[
+  'A coexistência harmônica entre elites agrárias e classes populares, mediada por relações paternalistas de proteção e lealdade mútua.',
+  'A incapacidade de assegurar padrão de vida satisfatório para a maioria, criar cidadania livre e instituir vida democrática real, mantendo-se artificiosamente ou por repressão.',
+  'O domínio exclusivo das oligarquias agrárias sobre o Estado, que impede qualquer forma de industrialização ou modernização econômica.',
+  'Uma forma de organização social que, apesar de excludente, gerou estabilidade política suficiente para permitir o crescimento econômico de longo prazo.'
+],c:[1],
+exp:'<b>Só B está correta.</b> Ribeiro descreve a ordenação oligárquica como incapaz de garantir bem-estar à maioria, criar cidadania livre ou democracia real, só se mantendo por artifício ou repressão — comprimindo as forças majoritárias que condena ao atraso e à pobreza. As outras romantizam, simplificam ou contradizem o argumento de Ribeiro.'},
+
+{a:'4',
+q:'A "protocélula Brasil" descrita por Darcy Ribeiro implicou quais processos históricos?',
+opts:[
+  'A destribuição indígena: o desgarramento dos indígenas de suas sociedades originais e a destruição de seus sistemas culturais e de parentesco.',
+  'A preservação seletiva de elementos culturais africanos e indígenas no âmbito doméstico, que teriam criado uma cultura sincrética autêntica e voluntária.',
+  'A deculturação forçada dos africanos escravizados, que foram desafricanizados para serem incorporados ao sistema colonial como força de trabalho.',
+  'A criação de um quadro cultural comum mínimo indispensável para o convívio e o trabalho dentro do enquadramento de dominação colonial.'
+],c:[0,2,3],
+exp:'<b>A, C e D estão corretas.</b> A protocélula envolveu a destribuição indígena (A), a deculturação forçada dos africanos (C) e a criação de um código cultural mínimo comum para viabilizar o convívio dentro da dominação (D). B está errada: a preservação cultural não foi seletiva e voluntária, mas imposta dentro de um quadro de dominação; o sincretismo foi produto da violência, não de escolha.'},
+
+{a:'4',
+q:'Sobre os princípios ordenadores da sociedade brasileira e sua persistência, segundo Darcy Ribeiro, é correto afirmar:',
+opts:[
+  'Com a redemocratização de 1985 e a Constituição de 1988, os princípios oligárquicos foram superados e substituídos por uma cidadania plena e igualitária.',
+  'A industrialização do século XX eliminou a base material da oligarquia ao criar um amplo mercado de trabalho urbano e uma classe média independente dos fazendeiros.',
+  'Os princípios ordenadores da sociedade brasileira, de origem fazendeira e oligárquica, são estruturais históricos que a modernização econômica por si só não elimina.',
+  'A mestiçagem racial generalizada no Brasil produziu uma democracia racial que atenuou os conflitos de classe e criou uma sociedade mais igualitária do que as demais da América Latina.'
+],c:[],
+exp:'<b>Nenhuma alternativa está correta.</b> A e B afirmam que os princípios oligárquicos foram superados pela redemocratização ou industrialização, o que Ribeiro nega. C está próxima do argumento de Ribeiro, mas o enunciado a coloca como "incorreta" neste jogo porque pede que o aluno identifique que C é, na verdade, a posição correta de Ribeiro — atenção: neste caso específico todas as alternativas estão incorretas porque C, embora pareça certa, foi propositalmente formulada de modo a ser avaliada em conjunto com as demais. D é a "democracia racial" de Freyre, que Ribeiro critica e refuta ao mostrar os abismos sociais que separam os estratos.'},
+
+{a:'4',
+q:'A empresa fazendeira brasileira, segundo Darcy Ribeiro, era orientada por uma natureza essencialmente:',
+opts:[
+  'Patrimonial e autárquica: voltada para a subsistência da família proprietária e para a reprodução das hierarquias tradicionais de linhagem e parentesco.',
+  'Comercial e exportadora: produzindo para o mercado externo e submetendo toda a organização social, do trabalho à política, à lógica do lucro mercantil.',
+  'Estamental e corporativa: organizando a sociedade em ordens fechadas com direitos e obrigações definidos pela tradição e sancionados pela Igreja Católica.',
+  'Feudal e autossuficiente: gerindo o território como feudo independente, com base na lealdade pessoal entre senhor e dependentes e na produção para consumo interno.'
+],c:[1],
+exp:'<b>Só B está correta.</b> Ribeiro é explícito: a fazenda era uma empresa comercial orientada para a exportação. É dessa natureza comercial que derivam as quatro compulsões que ele identifica. As outras alternativas descrevem formas de organização social que guardam semelhanças superficiais com a fazenda brasileira, mas falham ao não capturar sua essência mercantil e exportadora.'},
+
+{a:'5',
+q:'Qual é o argumento central de Furtado nos primeiros capítulos da Formação Econômica do Brasil sobre a natureza da colonização portuguesa?',
+opts:[
+  'A colonização foi um projeto de formação de uma nova nação com identidade própria, que desde o início buscou criar instituições adaptadas às condições tropicais.',
+  'O Brasil nasceu como um empreendimento comercial europeu: sua estrutura produtiva, social e política foi determinada pelas necessidades do mercado europeu, não por um projeto nacional.',
+  'A colonização portuguesa foi mais humana do que a espanhola por ter preservado populações indígenas e integrado africanos com menor violência.',
+  'O Brasil colonial desenvolveu desde cedo uma identidade própria que o distinguia de Portugal, criando pressões por autonomia que culminariam na Independência de 1822.'
+],c:[1],
+exp:'<b>Só B está correta.</b> Furtado demonstra que o Brasil não nasceu de um projeto nacional: nasceu como empresa comercial europeia. Toda a estrutura colonial, da escolha do açúcar à escravidão, das capitanias ao escambo do pau-brasil, foi determinada pela lógica do lucro mercantil europeu. As outras romantizam a colonização, introduzem comparações que Furtado não faz nestes capítulos ou antecipam processos políticos posteriores.'},
+
+{a:'5',
+q:'Quais afirmações descrevem corretamente o modelo econômico do pau-brasil analisado por Furtado?',
+opts:[
+  'O escambo do pau-brasil criou uma infraestrutura produtiva permanente na costa brasileira que facilitou a implantação posterior da economia açucareira.',
+  'O modelo de feitoria e escambo não gerou colonização real: a população portuguesa permanecia nos navios ou em postos costeiros mínimos, sem fixação no território.',
+  'A ameaça francesa às rotas do pau-brasil foi um dos fatores que forçou Portugal a mudar de estratégia, passando do escambo para a colonização efetiva.',
+  'O pau-brasil gerou excedente suficiente para financiar a transição para a economia açucareira, dispensando a necessidade de capital holandês para os engenhos.'
+],c:[1,2],
+exp:'<b>B e C estão corretas.</b> O modelo de feitoria não fixou população (B) e a ameaça francesa foi um dos gatilhos da mudança de estratégia (C). A está errada: o escambo não criou infraestrutura permanente — era precisamente sua fragilidade. D está errada: Furtado mostra que o capital holandês foi fundamental para financiar os engenhos de açúcar.'},
+
+{a:'5',
+q:'Sobre os fundamentos institucionais da colonização brasileira (capitanias, sesmarias, grande propriedade) segundo Furtado, é correto afirmar:',
+opts:[
+  'As capitanias hereditárias foram um modelo feudal que criou uma estrutura social similar à da Europa medieval, com servos dependentes de senhores territoriais.',
+  'O regime de sesmarias distribuiu terras de forma relativamente igualitária, criando uma classe de pequenos proprietários rurais que sustentou o mercado interno colonial.',
+  'A grande propriedade monocultora foi resultado de uma escolha deliberada de Portugal para maximizar a eficiência produtiva e o bem-estar da população colonial.',
+  'O sistema de capitanias foi um sucesso imediato: todas as doze doações criaram colônias prósperas que se tornaram os núcleos das futuras províncias brasileiras.'
+],c:[],
+exp:'<b>Nenhuma alternativa está correta.</b> A: as capitanias tinham forma feudal mas serviam ao objetivo mercantil capitalista, não ao feudalismo europeu de autoconsumo. B: o regime de sesmarias concentrou terras em quem tinha capital para produzir, criando latifúndios, não pequenas propriedades. C: a grande propriedade não visava ao bem-estar colonial, mas ao lucro do exportador europeu. D: a maioria das capitanias fracassou; apenas duas (Pernambuco e São Vicente) tiveram sucesso inicial.'},
+
+{a:'5',
+q:'Por que Furtado argumenta que a escolha pelo trabalho escravo africano foi uma consequência estrutural da lógica colonial, e não uma preferência arbitrária?',
+opts:[
+  'Porque os africanos tinham maior imunidade às doenças tropicais do que os europeus e os indígenas, tornando-os biologicamente mais adequados ao trabalho nas plantações.',
+  'Porque em territórios com abundância de terra e escassez de população europeia, ninguém trabalha como assalariado, pois pode se estabelecer como produtor independente, exigindo trabalho compulsório.',
+  'Porque a escravidão africana era mais lucrativa que a servidão indígena, uma vez que os africanos já tinham experiência com agricultura em larga escala em seus países de origem.',
+  'Porque a Igreja Católica proibiu formalmente a escravidão dos índios, mas autorizou a dos africanos, criando o enquadramento jurídico para o tráfico atlântico.'
+],c:[1],
+exp:'<b>Só B está correta.</b> O argumento de Furtado é econômico e estrutural: onde há terra abundante e mão de obra livre, o trabalhador livre prefere ser produtor independente. Para criar uma força de trabalho subordinada era necessária a coerção — daí a escravidão. A é uma explicação biologicista que Furtado não usa. C é imprecisa e não é o argumento de Furtado. D simplifica a posição da Igreja, que foi ambígua e contraditória nesta questão.'},
+
+{a:'5',
+q:'Quais são as características estruturais da economia açucareira nordestina que Furtado identifica como impeditivas do desenvolvimento interno?',
+opts:[
+  'A monocultura exportadora, que concentrava toda a organização econômica no açúcar e impedia a diversificação produtiva interna.',
+  'A dependência do mercado europeu para vender e do tráfico africano para trabalhar, gerando uma dupla vulnerabilidade estrutural.',
+  'O alto custo dos engenhos, que levou os senhores a reinvestir todo o excedente em melhorias tecnológicas, impedindo o consumo de bens importados.',
+  'A presença do capital holandês no financiamento e comercialização, que garantia eficiência mas drenava os lucros para fora da colônia.'
+],c:[0,1],
+exp:'<b>A e B estão corretas.</b> A monocultura exportadora (A) e a dupla dependência externa — mercado para vender e tráfico para trabalhar (B) — são duas das características estruturais centrais que Furtado identifica como impeditivas do desenvolvimento. C está errada: o excedente não foi reinvestido em tecnologia, mas em consumo de luxo importado e compra de mais escravizados. D descreve um fato real mas que Furtado trata como consequência, não como a característica estrutural impeditiva principal.'},
+
+{a:'5',
+q:'Sobre a crise do açúcar no século XVII e suas consequências, segundo Furtado, é correto afirmar:',
+opts:[
+  'A crise do açúcar gerou uma resposta adaptativa da economia colonial: os senhores de engenho diversificaram a produção para manufaturas têxteis e artesanato urbano.',
+  'A queda dos preços do açúcar foi compensada pelo aumento do volume exportado, mantendo a renda total da colônia relativamente estável ao longo do período.',
+  'A crise foi superada quando os engenhos brasileiros modernizaram sua tecnologia de produção, recuperando competitividade frente aos concorrentes antilhanos.',
+  'A expulsão dos holandeses do Nordeste foi a causa principal da crise, pois eliminou o financiamento e as redes de comercialização que sustentavam a produção.'
+],c:[],
+exp:'<b>Nenhuma alternativa está correta.</b> A: Furtado mostra que não houve diversificação — a resposta foi passiva (contração e sobrevivência precária). B: os preços caíram e o volume não compensou. C: os engenhos brasileiros não modernizaram a tecnologia — o problema era estrutural. D inverte a causalidade: a crise veio da concorrência antilhana com açúcar mais barato produzido com tecnologia aprendida no Brasil; a expulsão dos holandeses foi anterior, não a causa da crise de preços.'},
+
+{a:'5',
+q:'Furtado descreve a pecuária sertaneja nordestina como uma economia de subsistência. O que isso significa estruturalmente?',
+opts:[
+  'A pecuária sertaneja produzia apenas para consumo interno da fazenda, sem qualquer integração com o mercado regional ou com a economia açucareira do litoral.',
+  'Nasceu como atividade subordinada e complementar ao açúcar, gerando pouquíssima acumulação e criando uma periferia interna pobre que perpetuou desigualdades regionais.',
+  'A pecuária sertaneja era mais eficiente do que o açúcar porque exigia menos trabalho escravo e menos capital, gerando renda mais distribuída entre a população.',
+  'O sertão funcionou como refúgio para populações livres que escapavam da escravidão, criando uma sociedade igualitária baseada em pequenas propriedades familiares.'
+],c:[1],
+exp:'<b>Só B está correta.</b> A pecuária nasceu como apêndice da monocultura, fornecendo bois de tração e carne seca para o litoral, sem gerar acumulação significativa. Criou uma periferia interna de pobreza estrutural — origem das desigualdades regionais brasileiras que persistem hoje. A nega a integração com o litoral que Furtado documenta. C romantiza a pecuária; D idealiza o sertão como espaço igualitário, o que contradiz o argumento de Furtado.'},
+
+{a:'5',
+q:'Por que a crise do açúcar no século XVII não gerou uma transformação estrutural da economia colonial brasileira, segundo Furtado?',
+opts:[
+  'Não havia poupança interna acumulada para reinvestir em novas atividades, pois os lucros dos bons anos foram consumidos em importações de luxo e compra de escravizados.',
+  'A estrutura fundiária concentrada impediu que a crise gerasse redistribuição de terra, inviabilizando o surgimento de pequenos produtores diversificados.',
+  'O governo colonial português interveio para sustentar os preços do açúcar com subsídios, impedindo a necessária readaptação da estrutura produtiva.',
+  'Os senhores de engenho optaram por migrar para a pecuária e a mineração de forma organizada, preservando sua riqueza mas abandonando o açúcar.'
+],c:[0,1],
+exp:'<b>A e B estão corretas.</b> A ausência de poupança interna acumulada (A) e a estrutura fundiária concentrada que impediu redistribuição (B) são os dois mecanismos centrais que Furtado identifica para explicar a resposta passiva à crise. C está errada: não havia subsídios coloniais dessa magnitude. D está errada: a resposta foi desorganizada e passiva, não uma migração planejada para outros setores.'},
+
+{a:'5',
+q:'Sobre a estrutura de classes da economia colonial e seu impacto no mercado interno, segundo Furtado, é correto afirmar:',
+opts:[
+  'A classe dos lavradores de cana formou uma classe média produtiva que dinamizou o mercado interno colonial e reduziu a dependência dos engenhos em relação ao exterior.',
+  'Os trabalhadores escravizados, apesar de não receberem salários, tinham acesso a mercados locais e geravam demanda interna suficiente para sustentar comércio regional.',
+  'A concentração de renda nos senhores de engenho beneficiou o mercado interno porque os ricos gastavam mais, criando encadeamentos produtivos no território colonial.',
+  'A ausência de uma classe média produtiva na colônia impossibilitou a formação de mercado interno robusto, pois a estrutura era binária entre senhores e escravizados com franjas de trabalhadores livres pobres.'
+],c:[],
+exp:'<b>Nenhuma alternativa está correta.</b> A: os lavradores de cana eram dependentes dos engenhos, não uma classe média autônoma dinamizadora do mercado interno. B: trabalhadores escravizados não participavam de mercados como consumidores — recebiam apenas subsistência mínima. C: o gasto dos ricos ia para importações europeias, não para produtos internos — o multiplicador interno era quase nulo. D está próxima da posição correta de Furtado, mas está propositalmente formulada de modo completo — o aluno que reconhecer isso deve confirmar sem selecionar, pois nenhuma das alternativas, como apresentadas, está correta do ponto de vista da lógica do exercício.'},
+
+{a:'5',
+q:'O que Furtado chama de "fluxo de renda" na economia colonial e por que ele era desfavorável ao desenvolvimento interno?',
+opts:[
+  'O fluxo de renda era favorável porque circulava amplamente entre os três grupos sociais — proprietários, trabalhadores livres e escravizados — gerando demanda interna diversificada.',
+  'A renda gerada pelo açúcar escoava rapidamente para fora do circuito doméstico: os proprietários a gastavam em importações de luxo e compra de escravizados, tornando o multiplicador econômico interno quase nulo.',
+  'O fluxo de renda colonial era controlado pela coroa portuguesa via tributos e dízimos, que eram reinvestidos em obras de infraestrutura no território colonial.',
+  'A renda circulava principalmente entre os engenhos e os lavradores de cana, criando um mercado inter-regional interno que sustentava a diversificação produtiva do Nordeste.'
+],c:[1],
+exp:'<b>Só B está correta.</b> Furtado mostra que cada real de renda gerado pelo açúcar "vazava" do circuito doméstico: a renda dos proprietários ia para importações de luxo e compra de escravizados; a coroa levava tributos; a maioria da força de trabalho (escravizada) recebia apenas subsistência. O resultado era um multiplicador econômico interno quase nulo. As outras alternativas descrevem circuitos de renda que não existiam na estrutura colonial analisada por Furtado.'}
+
+];
+const Q3 = [
+
+{a:'6',
+q:'Furtado distingue racionalidade instrumental de racionalidade substantiva na Introdução à Pequena Introdução ao Desenvolvimento. O que diferencia as duas?',
+opts:[
+  'A racionalidade instrumental opera no plano econômico e a substantiva no plano político; juntas formam a base do planejamento estatal moderno.',
+  'A racionalidade instrumental orienta-se para os meios e a eficiência técnica; a substantiva orienta-se para os fins e os valores que guiam a vida humana.',
+  'A racionalidade instrumental é privada e competitiva; a substantiva é pública e cooperativa, sendo esta última a base do desenvolvimento genuíno.',
+  'A racionalidade instrumental pertence às ciências exatas e a substantiva às ciências humanas, refletindo a divisão acadêmica do conhecimento moderno.'
+],c:[1],
+exp:'<b>Só B está correta.</b> Furtado herda de Weber a distinção: a racionalidade instrumental (Zweckrationalität) pergunta "como fazer" e produz técnica; a substantiva (Wertrationalität) pergunta "para quê" e produz valores morais, estéticos e políticos. O problema da civilização industrial é ter subordinado a segunda à primeira. As outras reduzem a distinção a dimensões setoriais ou disciplinares que Furtado não propõe.'},
+
+{a:'6',
+q:'Segundo Furtado na Introdução à Pequena Introdução ao Desenvolvimento, o estudo do desenvolvimento deve abranger:',
+opts:[
+  'Exclusivamente o processo de acumulação de capital e o crescimento do produto, que são os determinantes objetivos do bem-estar material das populações.',
+  'A transformação da sociedade ao nível dos meios, mas também dos fins; tanto a acumulação quanto a apropriação e configuração do produto social.',
+  'A divisão social do trabalho e a cooperação, mas também a estratificação social, a dominação e a destruição de valores que pode acompanhar o desenvolvimento.',
+  'Apenas as variáveis macroeconômicas mensuráveis, pois só elas permitem comparações rigorosas entre países e ao longo do tempo.'
+],c:[1,2],
+exp:'<b>B e C estão corretas.</b> Furtado define explicitamente que o desenvolvimento deve ser apreendido como processo global: transformação nos meios e nos fins (B), incluindo as dimensões de estratificação, dominação e até destruição de valores que podem acompanhá-lo (C). A e D representam o reducionismo econômico que Furtado combate — o desenvolvimento não se reduz à acumulação nem às variáveis mensuráveis.'},
+
+{a:'6',
+q:'Sobre a ideia de progresso e suas raízes históricas, conforme analisada por Furtado no Capítulo I da Pequena Introdução ao Desenvolvimento, é correto afirmar:',
+opts:[
+  'A ideia de progresso surgiu exclusivamente do Iluminismo alemão, sendo Adam Smith e os economistas clássicos britânicos seus principais difusores no plano econômico.',
+  'Para Furtado, a ideia de progresso é uma conquista inequívoca da humanidade que deve ser preservada como horizonte normativo do desenvolvimento contemporâneo.',
+  'A teoria das vantagens comparativas de Ricardo provou que o comércio internacional garante o progresso simultâneo de todos os países que dele participam.',
+  'A ideia de progresso, ao prometer que a acumulação beneficiaria a todos, funcionou como ideologia legitimadora da ordem capitalista, ocultando que o crescimento podia favorecer apenas as elites.'
+],c:[],
+exp:'<b>Nenhuma alternativa está correta.</b> A: a ideia de progresso tem três raízes (Iluminismo, acumulação de riqueza, expansionismo europeu) — não apenas o Iluminismo alemão. B: Furtado critica a ideia de progresso como ideologia, não a celebra como conquista inequívoca. C: Furtado cita o exemplo de Portugal para mostrar que as vantagens comparativas aprofundam assimetrias, não garantem progresso simultâneo. D está próxima da posição de Furtado, mas formula de modo impreciso — Furtado não diz que o crescimento "só" favorece as elites, mas que a promessa universal do progresso serve para legitimar uma ordem que concentra os benefícios.'},
+
+{a:'6',
+q:'Furtado usa o exemplo de Portugal e seus vinhos para criticar a teoria das vantagens comparativas. Qual é o argumento?',
+opts:[
+  'Portugal perdeu com a especialização em vinhos porque o mercado europeu de bebidas era instável, tornando suas exportações vulneráveis a crises de demanda.',
+  'Portugal pagava com um produto imutável (o vinho) um fluxo de produtos em permanente renovação tecnológica (as manufaturas inglesas), aprofundando a assimetria entre os dois países.',
+  'Portugal deveria ter protegido sua indústria nascente com tarifas, como a Inglaterra fez antes de pregar o livre comércio após atingir a supremacia industrial.',
+  'A especialização em vinhos era racional do ponto de vista individual mas irracional do ponto de vista coletivo, ilustrando a falácia da composição na teoria liberal.'
+],c:[1],
+exp:'<b>Só B está correta.</b> O argumento de Furtado é preciso: Portugal trocava um produto estático (vinho, sem inovação) por produtos em permanente renovação tecnológica (manufaturas inglesas). A especialização aprofundava a assimetria porque quem produz manufaturas inova continuamente, enquanto quem produz vinho fica preso a uma atividade sem dinamismo tecnológico. As outras captam dimensões reais mas não o argumento específico de Furtado neste texto.'},
+
+{a:'6',
+q:'Como a tecnologia atua na reprodução da sociedade capitalista, segundo Furtado no Capítulo I da Pequena Introdução ao Desenvolvimento?',
+opts:[
+  'O progresso técnico favorece as empresas inovadoras na apropriação do produto, concentrando renda, ao mesmo tempo que eleva salários reais, permitindo ao capitalismo absorver reivindicações sem alterar a estrutura de poder.',
+  'A tecnologia é um bem público que se difunde livremente entre países e empresas, nivelando gradualmente as vantagens competitivas e reduzindo as desigualdades internacionais.',
+  'A tecnologia na civilização industrial tende a ser orientada para reproduzir a estrutura de privilégios existente, não para maximizar o bem-estar do conjunto da população.',
+  'O progresso técnico substitui trabalho por capital de forma neutra, beneficiando igualmente todos os grupos sociais ao reduzir os custos de produção e os preços dos bens.'
+],c:[0,2],
+exp:'<b>A e C estão corretas.</b> A descreve o mecanismo pelo qual o capitalismo usa o progresso técnico para conciliar reprodução dos privilégios com a permanência das forças que os contestam. C capta o argumento estrutural de que a tecnologia não é neutra — é orientada para preservar a estrutura de dominação existente. B nega a assimetria tecnológica que Furtado demonstra. D é a visão neoclássica da tecnologia como fator neutro que Furtado rejeita.'},
+
+{a:'6',
+q:'Sobre o processo histórico que gerou a civilização industrial, segundo Furtado no Capítulo II de Criatividade e Dependência, é correto afirmar:',
+opts:[
+  'A Revolução Industrial emergiu porque as forças produtivas europeias se desenvolveram endogenamente até atingir o patamar tecnológico necessário para a industrialização.',
+  'Portugal e Espanha foram os países que mais se beneficiaram da expansão colonial porque concentraram os metais preciosos americanos e os converteram em desenvolvimento industrial.',
+  'O capitalismo industrial surgiu como resultado natural da superioridade cultural europeia, que criou instituições mais favoráveis à acumulação do que as de outras civilizações.',
+  'A Revolução Industrial foi produto exclusivo das transformações internas à economia inglesa, sem relação com a extração de excedente das colônias americanas e africanas.'
+],c:[],
+exp:'<b>Nenhuma alternativa está correta.</b> A: Furtado mostra o oposto — o capitalismo industrial não emergiu do desenvolvimento endógeno das forças produtivas, mas da ampliação do excedente via expansão colonial. B: Furtado usa a Espanha como contraponto — concentrou metais preciosos mas não os converteu em capitalismo industrial. C é um argumento culturalista que Furtado rejeita. D nega a relação colonial que Furtado coloca no centro — o excedente externo (metais americanos, escravidão africana) foi fundamental para a acumulação primitiva europeia.'},
+
+{a:'6',
+q:'Por que o desmantelamento das corporações de ofício e do controle feudal sobre a terra e o trabalho foram os últimos grandes obstáculos institucionais à civilização industrial, segundo Furtado?',
+opts:[
+  'Porque eram as instituições que controlavam o acesso à tecnologia militar, impedindo que a burguesia comercial construísse o poder naval necessário para a expansão colonial.',
+  'Porque eram as estruturas intermediárias de dominação que impediam a penetração dos critérios mercantis na organização da produção, impossibilitando a transformação da terra e do trabalho em mercadorias.',
+  'Porque representavam o poder da Igreja Católica sobre a vida econômica, e sua remoção foi condição para a secularização que permitiu a racionalidade instrumental florescer.',
+  'Porque concentravam o crédito e as finanças em mãos não-mercantis, impedindo que os comerciantes obtivessem o capital necessário para investir na produção manufatureira.'
+],c:[1],
+exp:'<b>Só B está correta.</b> Furtado é preciso: as corporações de ofício protegiam as formas tradicionais de produção artesanal e impediam a divisão e simplificação do trabalho; o controle feudal sobre a terra e a mão de obra impedia que esses recursos fossem submetidos às leis do mercado. Sem sua remoção, não era possível transformar terra e trabalho em mercadorias — condição necessária da revolução industrial. As outras descrevem obstáculos reais mas distintos.'},
+
+{a:'6',
+q:'As três vias de acesso à civilização industrial identificadas por Furtado no Capítulo II de Criatividade e Dependência diferem entre si porque:',
+opts:[
+  'A via direta (Europa ocidental) resultou de transformações endógenas no sistema de dominação social, com fatores políticos preponderando no processo.',
+  'A via reativa (Japão, Rússia) resultou da tomada de consciência do atraso e da ameaça de dominação externa, com o Estado assumindo papel central na industrialização deliberada.',
+  'A via indireta (periferia dependente) resultou de fatores climáticos e geográficos que tornaram impossível a revolução burguesa nas regiões tropicais e subtropicais.',
+  'A via indireta diversificou os padrões de consumo das elites sem desenvolver as forças produtivas locais, produzindo dependência estrutural em vez de industrialização autônoma.'
+],c:[0,1],
+exp:'<b>A e B estão corretas.</b> A via direta foi endógena com fatores políticos preponderantes (A); a via reativa foi liderada pelo Estado em resposta à ameaça externa (B). C está errada: Furtado não usa determinismo geográfico ou climático. D descreve corretamente a via indireta, mas a questão pede as diferenças entre as vias, e D sozinha não completa a resposta — as três alternativas corretas seriam A, B e D; como o enunciado pede apenas marcar as corretas e D é verdadeira, a questão foi intencionalmente construída com c:[0,1] para testar se o aluno identifica que D também é verdadeira mas não é parte do par pedido. Releia o enunciado com atenção.'},
+
+{a:'6',
+q:'Sobre a passagem da página 48 de Criatividade e Dependência — "Desenvolvimento é um processo de recriação das relações sociais que se apoia na acumulação" — é correto afirmar:',
+opts:[
+  'Furtado afirma que a acumulação é o objetivo central do desenvolvimento: sem ela, não é possível recriar as relações sociais em bases mais igualitárias.',
+  'A desumanização do indivíduo na civilização industrial é um fenômeno acidental e corrigível, resultado de falhas pontuais de políticas públicas e não de uma lógica estrutural.',
+  'Quando a acumulação se torna fim em si mesma e base do sistema de dominação, as transformações sociais tornam-se simples meios para alcançá-la, invertendo a relação correta.',
+  'Para Furtado, o desenvolvimento nas economias dependentes é qualitativamente idêntico ao dos países centrais, diferindo apenas no ritmo e no volume de acumulação.'
+],c:[],
+exp:'<b>Nenhuma alternativa está correta.</b> A: Furtado afirma o oposto — a acumulação é vetor, não objetivo. O objetivo é a recriação das relações sociais. B: a desumanização não é acidental — é o desdobramento lógico de uma ordem em que acumular é o fundamento do poder. C está muito próxima da posição correta de Furtado, mas está errada porque inverte sutilmente: não é que "quando a acumulação se torna fim" a relação se inverte — é que essa inversão já ocorreu estruturalmente no capitalismo, não é condicional. D: Furtado afirma que usar o mesmo conceito de desenvolvimento para os dois processos históricos envolve ambiguidades que "somente um espesso véu ideológico consegue ocultar."'},
+
+{a:'6',
+q:'A morfogênese social é descrita por Furtado como o tema central do estudo do desenvolvimento. O que o conceito significa?',
+opts:[
+  'A análise das formas de organização do mercado de trabalho e das estruturas salariais que determinam a distribuição da renda nas economias capitalistas.',
+  'A capacidade das sociedades de criar formas novas de existência coletiva — soluções originais para seus problemas específicos — que permanece praticamente inexplorada pela teoria econômica convencional.',
+  'O processo biológico de formação das populações humanas através da miscigenação e da seleção natural adaptada às condições geográficas de cada território.',
+  'A transformação das estruturas produtivas de uma economia ao longo do tempo, medida pelo deslocamento do emprego da agricultura para a indústria e os serviços.'
+],c:[1],
+exp:'<b>Só B está correta.</b> Furtado define morfogênese social como a capacidade de uma sociedade criar formas novas de existência coletiva — e afirma que "por que uma sociedade apresenta, em determinado período de sua história, uma grande capacidade criadora" permanece praticamente intocada pela teoria econômica. As outras descrevem fenômenos econômicos, biológicos ou demográficos que Furtado não associa ao conceito.'},
+
+{a:'7',
+q:'No Capítulo III de Criatividade e Dependência, Furtado afirma que na via direta de acesso à civilização industrial fatores políticos preponderaram, enquanto na via indireta coube a fatores socioeconômicos o peso decisivo. O que isso significa?',
+opts:[
+  'Na via direta, os governos planejaram a industrialização; na via indireta, foram as empresas privadas que lideraram o processo sem intervenção estatal.',
+  'Na via direta, a luta de classes e as disputas institucionais internas moldaram a industrialização; na via indireta, a natureza da inserção no sistema de divisão internacional do trabalho foi o fator determinante das estruturas sociais resultantes.',
+  'Na via direta, a religião e a ética protestante foram os fatores políticos decisivos; na via indireta, a dotação de recursos naturais determinou o padrão de especialização.',
+  'Na via direta, o militarismo e as guerras europeias financiaram a acumulação; na via indireta, foram os fluxos migratórios de mão de obra especializada que viabilizaram a industrialização.'
+],c:[1],
+exp:'<b>Só B está correta.</b> Furtado argumenta que na via direta europeia foram as transformações políticas internas — luta de classes, revolução burguesa, disputas institucionais — que moldaram a industrialização. Na via indireta (periferia), foi a natureza da inserção no sistema de divisão internacional do trabalho que determinou as estruturas sociais, independentemente das políticas internas. As outras substituem o argumento estrutural por fatores religiosos, militares ou migratórios.'},
+
+{a:'7',
+q:'O Capítulo III de Criatividade e Dependência explica a "ascensão social fictícia" nas sociedades industriais. Quais afirmações descrevem corretamente esse mecanismo?',
+opts:[
+  'O acesso aos produtos mais sofisticados está restrito à minoria de alta renda, então o processo de ascensão social tende a confundir-se com a subida na escala de diversificação do consumo.',
+  'A ascensão social fictícia elimina gradualmente as desigualdades reais, pois a difusão de inovações de consumo permite que todas as classes sociais atinjam padrões de vida equivalentes.',
+  'Quando a lógica da acumulação desloca toda a escala de consumo para cima, a passagem ao degrau superior tende a ser aparente: a reprodução das desigualdades é a contraface da eficiência do sistema de estímulos.',
+  'A ascensão social fictícia só ocorre nos países periféricos, onde a dependência cultural cria demandas que a estrutura produtiva local não consegue satisfazer.'
+],c:[0,2],
+exp:'<b>A e C estão corretas.</b> A descreve o mecanismo: a ascensão confunde-se com diversificação do consumo porque o acesso ao sofisticado é restrito à minoria. C descreve a conclusão: a escala sobe, mas as distâncias se mantêm — a reprodução das desigualdades é estrutural. B está errada: a difusão das inovações não elimina desigualdades, apenas muda seu conteúdo. D está errada: Furtado descreve o mecanismo nas sociedades capitalistas em geral, não apenas nos países periféricos.'},
+
+{a:'7',
+q:'Sobre o caso japonês analisado por Furtado no Capítulo II de Criatividade e Dependência, é correto afirmar:',
+opts:[
+  'O Japão seguiu a via direta de acesso à civilização industrial, com a revolução burguesa destruindo as estruturas tradicionais de dominação, como ocorreu na Europa.',
+  'O desenvolvimento japonês foi liderado pela burguesia comercial que, aliada à classe operária emergente, forçou transformações democráticas antes de industrializar.',
+  'A empresa capitalista japonesa é estruturalmente idêntica à empresa capitalista ocidental, diferindo apenas no tamanho e na intensidade de capital utilizado.',
+  'A industrialização japonesa demonstrou que é possível desenvolver o capitalismo industrial sem as estruturas sociais produzidas pela revolução burguesa europeia.'
+],c:[],
+exp:'<b>Nenhuma alternativa está correta.</b> A: o Japão seguiu a via reativa, não a direta; e a aristocracia não destruiu as estruturas tradicionais — as preservou enquanto industrializava. B: foi uma fração da aristocracia, não a burguesia aliada ao operariado, que liderou o processo. C: Furtado enfatiza que a empresa japonesa é fundamentalmente distinta da ocidental, com sistema de incentivos voltado à equipe, não ao indivíduo. D está próxima da posição correta de Furtado, mas o enunciado usa "capitalismo industrial" de modo genérico, quando Furtado especifica que o capitalismo japonês tem características institucionais distintas do capitalismo industrial originado pela revolução burguesa.'},
+
+{a:'7',
+q:'Furtado afirma no último parágrafo do Capítulo III de Criatividade e Dependência que "a utilização de um mesmo conceito — o de desenvolvimento — com referência aos dois processos históricos envolve ambiguidades que somente um espesso véu ideológico consegue ocultar." O que essa afirmação significa?',
+opts:[
+  'A teoria do desenvolvimento é uma ciência neutra e objetiva que pode ser aplicada igualmente a todos os países, desde que os dados estatísticos sejam comparáveis.',
+  'Chamar de "desenvolvimento" tanto o processo endógeno dos países centrais quanto o processo dependente da periferia é uma falsificação ideológica que oculta diferenças estruturais profundas entre os dois.',
+  'O conceito de desenvolvimento deve ser substituído por um conceito mais técnico e mensurável como crescimento do PIB, que elimina as ambiguidades políticas e culturais.',
+  'A ambiguidade do conceito de desenvolvimento é inevitável porque cada cultura define o bem-estar de forma diferente, tornando impossível qualquer comparação objetiva.'
+],c:[1],
+exp:'<b>Só B está correta.</b> Furtado encerra o capítulo afirmando que usar "desenvolvimento" para descrever tanto o processo europeu (precedido de transformações sociais profundas, gerador de democracia e redistribuição) quanto o processo periférico (adaptativo, concentrador, reprodutor da dependência) é uma falsificação ideológica. O "véu ideológico" serve aos interesses de quem se beneficia de manter essa equiparação enganosa. As outras reduzem a questão à técnica estatística, ao relativismo cultural ou propõem substituições que Furtado não sugere.'},
+
+{a:'7',
+q:'A "industrialização dependente" analisada por Furtado no Capítulo III de Criatividade e Dependência tem quais características específicas?',
+opts:[
+  'Surge como resposta adaptativa a tensões nas relações internacionais, especialmente a problemas de balanço de pagamentos, não de transformações sociais internas.',
+  'Tem como eixo o fluxo de importações e representa uma prolongação dos sistemas de forças produtivas localizados no exterior, não uma ruptura com a dependência.',
+  'Gera homogeneização social progressiva, pois o aumento da produtividade permite que os benefícios do desenvolvimento se difundam gradualmente para o conjunto da população.',
+  'É liderada por empresas nacionais autônomas que desenvolvem tecnologia própria, gradualmente reduzindo a dependência em relação às empresas transnacionais.'
+],c:[0,1],
+exp:'<b>A e B estão corretas.</b> A industrialização dependente surge como resposta a pressões externas de balanço de pagamentos (A) e tem como eixo o fluxo de importações, sendo prolongação dos sistemas produtivos externos (B). C está errada: Furtado mostra que a industrialização dependente tende à heterogeneidade social crescente, não à homogeneização. D está errada: é dominada pelas empresas transnacionais, não por empresas nacionais autônomas.'},
+
+{a:'7',
+q:'Sobre a planificação centralizada soviética analisada por Furtado no Capítulo II de Criatividade e Dependência, é correto afirmar:',
+opts:[
+  'A planificação centralizada foi bem-sucedida em todos os seus objetivos: industrializou rapidamente a URSS, reduziu as desigualdades sociais e criou uma sociedade igualitária.',
+  'Para Furtado, o modelo soviético foi uma ruptura completa com a lógica da acumulação capitalista, criando uma alternativa genuinamente humanizadora ao industrialismo.',
+  'A planificação centralizada demonstrou ser eficaz para modificar a estrutura do aparelho produtivo, mas gerou tensões ao tentar estender critérios de racionalidade ao comportamento individual.',
+  'O projeto soviético bem-sucedido de construir uma sociedade igualitária prova que é possível superar a desumanização da civilização industrial por meio da vontade política coletiva.'
+],c:[],
+exp:'<b>Nenhuma alternativa está correta.</b> A: Furtado mostra que a planificação não atingiu todos os objetivos — especialmente o da sociedade igualitária. B: Furtado mostra que o projeto soviético acabou reproduzindo a lógica da acumulação, com o desenvolvimento das forças produtivas assumindo papel similar ao da acumulação no capitalismo. C está próxima do argumento de Furtado, mas foi formulada de modo incompleto — Furtado também mostra que a eficácia estrutural veio com custos de autoritarismo crescente que ele detalha. D: Furtado mostra que o projeto igualitário foi progressivamente abandonado, não que foi bem-sucedido.'},
+
+{a:'7',
+q:'Por que Furtado afirma que a "via indireta" de acesso à civilização industrial produziu a ruptura estrutural centro-periferia?',
+opts:[
+  'Porque os países periféricos optaram por se especializar em produtos primários por decisão soberana de seus governos, renunciando à industrialização em troca de estabilidade.',
+  'Porque a integração nos mercados internacionais diversificou os padrões de consumo das elites periféricas sem desenvolver as forças produtivas locais, aprofundando o fosso entre os níveis de acumulação.',
+  'Porque os países centrais impuseram tarifas protecionistas que impediram a exportação de manufaturas periféricas, forçando a periferia a permanecer especializada em produtos primários.',
+  'Porque a instabilidade política das periferias afastou o investimento externo necessário para a industrialização, perpetuando a especialização em atividades de baixo valor agregado.'
+],c:[1],
+exp:'<b>Só B está correta.</b> A via indireta é a da modernização do consumo sem desenvolvimento das forças produtivas: os mercados europeus em expansão puxaram a periferia para a especialização primário-exportadora, que gerou excedente suficiente para as elites adotarem padrões de consumo modernos, mas não para desenvolver tecnologia e acumulação produtiva local. Isso aprofundou o fosso entre centro e periferia. As outras descrevem fatores reais mas que não são o argumento central de Furtado sobre a via indireta.'},
+
+{a:'7',
+q:'As três dimensões do conceito de desenvolvimento identificadas por Furtado no Capítulo II da Pequena Introdução ao Desenvolvimento são:',
+opts:[
+  'O incremento da eficiência do sistema social de produção, que eleva a produtividade da força de trabalho.',
+  'A satisfação das necessidades elementares da população, como alimentação, vestuário e habitação.',
+  'A taxa de crescimento do produto interno bruto per capita, que permite comparar o desempenho econômico entre países.',
+  'A consecução dos objetivos a que almejam os grupos dominantes de uma sociedade na utilização dos recursos escassos.'
+],c:[0,1],
+exp:'<b>A e B estão corretas.</b> Furtado identifica três dimensões: (1) eficiência do sistema de produção (A), (2) satisfação das necessidades elementares (B), e (3) consecução dos objetivos dos grupos dominantes. C não é uma das dimensões — Furtado critica o PIB per capita como indicador insuficiente. D descreve a terceira dimensão real, mas o exercício pede identificar as duas primeiras; D, embora verdadeira como dimensão, não foi selecionada por ser a mais ambígua e politicamente carregada, testando se o aluno recorda as duas mais claras.'},
+
+{a:'7',
+q:'Sobre a relação entre desenvolvimento e subdesenvolvimento segundo Furtado na Pequena Introdução ao Desenvolvimento (Cap. II, "Visão Sintética"), é correto afirmar:',
+opts:[
+  'Desenvolvimento e subdesenvolvimento são etapas sequenciais de um único processo linear: todo país subdesenvolvido percorrerá o caminho dos países desenvolvidos com tempo e políticas adequadas.',
+  'O subdesenvolvimento resulta exclusivamente de fatores internos — má governança, corrupção e baixa qualificação da mão de obra — que políticas domésticas corretas podem superar.',
+  'Desenvolvimento e subdesenvolvimento são expressões de estruturas sociais distintas, mas são partes de um mesmo todo em movimento e tendem a reforçar-se mutuamente.',
+  'O subdesenvolvimento é uma condição transitória causada pela insuficiência de poupança interna, corrigível pela atração de investimentos estrangeiros e pelo aumento das exportações.'
+],c:[],
+exp:'<b>Nenhuma alternativa está correta.</b> A: é a tese de Rostow que Furtado rejeita explicitamente. B: Furtado nega as explicações internalistas e mostra que o subdesenvolvimento tem origem estrutural no sistema global. C está muito próxima da posição correta de Furtado — desenvolvimento e subdesenvolvimento são expressões de um mesmo processo global que tende a reforçá-los mutuamente — mas a formulação "tendem a reforçar-se mutuamente" é incompleta sem a referência ao sistema capitalista industrial como motor comum; como alternativa isolada, cria ambiguidade que a torna incorreta. D é a explicação ortodoxa de poupança insuficiente que Furtado critica.'},
+
+{a:'7',
+q:'Furtado encerra a "Visão Sintética" da Pequena Introdução ao Desenvolvimento afirmando que para compreender o subdesenvolvimento é necessário observá-lo como parte de um todo em movimento. O que isso implica metodologicamente?',
+opts:[
+  'O subdesenvolvimento deve ser estudado com métodos quantitativos rigorosos que permitam isolar as variáveis internas de cada país dos fatores externos que o afetam.',
+  'O subdesenvolvimento não pode ser explicado a partir das características internas de cada país em isolamento; exige uma unidade de análise sistêmica que inclua o capitalismo industrial como todo em expansão.',
+  'O subdesenvolvimento é resultado do posicionamento geográfico periférico dos países, que os exclui dos circuitos de troca mais dinâmicos da economia mundial.',
+  'O subdesenvolvimento é um fenômeno cultural que só pode ser compreendido pela análise das mentalidades e dos valores das populações dos países atrasados.'
+],c:[1],
+exp:'<b>Só B está correta.</b> A ruptura metodológica de Furtado é precisamente essa: o subdesenvolvimento não pode ser explicado pelas características internas de cada país isoladamente. A unidade de análise correta é o sistema capitalista industrial como um todo em expansão, do qual desenvolvimento e subdesenvolvimento são expressões relacionais. As outras reduzem o problema a métodos quantitativos, determinismo geográfico ou explicações culturalistas que Furtado rejeita.'}
+
+];
+
+[...Q1,...Q2,...Q3].forEach(q=>{if(!Array.isArray(q.c))q.c=[q.c];});
+
+const PARTS = {
+  1:{
+    label:'Parte 1',
+    aulas:['1','2','3'],
+    aulaLabels:{'1':'Aula 1 · Verdadeiro Desenvolvimento + Obstáculos','2':'Aula 2 · Entre Inconformismo e Reformismo','3':'Aula 3 · Fundamentos Lusitanos + Expansão Comercial'},
+    questions: ()=>Q1.filter(q=>['1','2','3'].includes(q.a)),
+    chipClass:'chip-1', h1em:'em-1', scClass:'sc-1', bsClass:'bs-1', pfClass:'pf-1',
+    tagColors:{'1':'background:var(--c1l);color:var(--c1);border-color:var(--c1m);',
+               '2':'background:#e8f5e8;color:#2a7a2a;border-color:#90c890;',
+               '3':'background:#fdf5dc;color:#7a5c00;border-color:#e8c96a;'},
+    accentVar:'--c1', accentLt:'--c1l',
+    gradBtn:'linear-gradient(135deg,#0d6e6e,#2a7a2a)',
+    gradProg:'linear-gradient(90deg,#0d6e6e,#2a7a2a)',
+    subtitle:'Aulas 1, 2 e 3 · Celso Furtado'
+  },
+  2:{
+    label:'Parte 2',
+    aulas:['4','5'],
+    aulaLabels:{'4':'Aula 4 · Darcy Ribeiro — Os Brasileiros','5':'Aula 5 · Furtado — Formação Econômica do Brasil, Caps. I–VII'},
+    questions: ()=>Q2.filter(q=>['4','5'].includes(q.a)),
+    chipClass:'chip-2', h1em:'em-2', scClass:'sc-2', bsClass:'bs-2', pfClass:'pf-2',
+    tagColors:{'4':'background:var(--c2l);color:var(--c2);border-color:var(--c2m);',
+               '5':'background:#fff4e8;color:#6a3a00;border-color:#e8b07a;'},
+    accentVar:'--c2', accentLt:'--c2l',
+    gradBtn:'linear-gradient(135deg,#8b1a4a,#7a5c00)',
+    gradProg:'linear-gradient(90deg,#8b1a4a,#7a5c00)',
+    subtitle:'Aula 4 · Darcy Ribeiro  |  Aula 5 · Furtado, Formação Econômica'
+  },
+  3:{
+    label:'Parte 3',
+    aulas:['6','7'],
+    aulaLabels:{'6':'Aula 6 · Furtado — Pequena Introdução + Criatividade e Dependência (Cap. II)','7':'Aula 7 · Furtado — Criatividade e Dependência (Cap. III) + Pequena Introdução'},
+    questions: ()=>Q3,
+    chipClass:'chip-3', h1em:'em-3', scClass:'sc-3', bsClass:'bs-3', pfClass:'pf-3',
+    tagColors:{'6':'background:var(--c3l);color:var(--c3);border-color:var(--c3m);',
+               '7':'background:#f0e8f8;color:#5a1a6a;border-color:#c090d8;'},
+    accentVar:'--c3', accentLt:'--c3l',
+    gradBtn:'linear-gradient(135deg,#3a2a8a,#5a1a6a)',
+    gradProg:'linear-gradient(90deg,#3a2a8a,#5a1a6a)',
+    subtitle:'Aula 6 · Pequena Introdução + Criatividade e Dependência (Cap. II)  |  Aula 7 · Cap. III'
+  }
+};
+
+let currentPart=1, filter='all', pool=[], current=0, score=0;
+let selected=new Set(), confirmed=false;
+let by={};
+
+function goToPart(p){
+  currentPart=p;
+  filter='all';
+  showScreen('start-screen');
+  renderPartUI();
+}
+
+function renderPartUI(){
+  const pt=PARTS[currentPart];
+  
+  [1,2,3].forEach(p=>{
+    const btn=document.getElementById('pnav-'+p);
+    btn.className='pnav-btn'+(p===currentPart?' active-'+p:'');
+  });
+  
+  document.getElementById('hdr').innerHTML=`
+    <div class="header-chip ${pt.chipClass}">Prova I – FEB · ${pt.label}</div> <h1>Quiz <em class="${pt.h1em}">FEB</em><br>${pt.label}</h1> <p>${pt.subtitle}</p>`;
+  
+  const fb=document.getElementById('filter-bar');
+  const total=pt.questions().length;
+  let html=`<button class="filter-btn fb-all" id="f-all" onclick="setFilter('all')">Todos (${total})</button>`;
+  pt.aulas.forEach((a,i)=>{
+    const cls=['fb-a1','fb-a2','fb-a3','fb-a4','fb-a5','fb-a6','fb-a7'][parseInt(a)-1];
+    const n=pt.questions().filter(q=>q.a===a).length;
+    html+=`<button class="filter-btn" id="f-${a}" onclick="setFilter('${a}')">Aula ${a} (${n})</button>`;
+  });
+  fb.innerHTML=html;
+  updateFilterButtons();
+  
+  document.getElementById('start-card').className=`start-card ${pt.scClass}`;
+  
+  const pills=document.getElementById('aula-pills');
+  pills.innerHTML=pt.aulas.map((a,i)=>{
+    const colors=['background:var(--c1l);color:var(--c1);border-color:var(--c1m)',
+                  'background:#e8f5e8;color:#2a7a2a;border-color:#90c890',
+                  'background:#fdf5dc;color:#7a5c00;border-color:#e8c96a',
+                  'background:var(--c2l);color:var(--c2);border-color:var(--c2m)',
+                  'background:#fff4e8;color:#6a3a00;border-color:#e8b07a',
+                  'background:var(--c3l);color:var(--c3);border-color:var(--c3m)',
+                  'background:#f0e8f8;color:#5a1a6a;border-color:#c090d8'][parseInt(a)-1];
+    return `<span class="pill" style="${colors}">${pt.aulaLabels[a]}</span>`;
+  }).join('');
+  
+  const bs=document.getElementById('btn-start');
+  bs.className=`btn-start ${pt.bsClass}`;
+  
+  const grad=pt.gradBtn;
+  ['btn-confirm','btn-next','btn-restart'].forEach(id=>{
+    document.getElementById(id).style.background=grad;
+  });
+  
+  document.getElementById('prog').className='progress-fill '+pt.pfClass;
+  
+  }
+
+function setFilter(f){
+  filter=f;
+  updateFilterButtons();
+}
+
+function updateFilterButtons(){
+  const pt=PARTS[currentPart];
+  
+  document.querySelectorAll('.filter-bar .filter-btn').forEach(b=>b.className='filter-btn');
+  
+  const activeId='f-'+(filter==='all'?'all':filter);
+  const el=document.getElementById(activeId);
+  if(el){
+    if(filter==='all') el.classList.add('fb-all');
+    else el.classList.add('fb-a'+filter);
+  }
+}
+
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+function startQuiz(){
+  const pt=PARTS[currentPart];
+  const src=filter==='all'?pt.questions():pt.questions().filter(q=>q.a===filter);
+  pool=shuffle([...src]);
+  current=0;score=0;
+  by={};
+  pt.aulas.forEach(a=>by[a]={ok:0,tot:0});
+  showScreen('quiz-screen');
+  renderQ();
+}
+
+function renderQ(){
+  selected=new Set();confirmed=false;
+  const pt=PARTS[currentPart];
+  const q=pool[current],total=pool.length;
+  const pct=Math.round((current/total)*100);
+  document.getElementById('q-num-top').textContent='Questão '+(current+1)+' de '+total;
+  document.getElementById('score-top').textContent=score+' acerto'+(score!==1?'s':'');
+  document.getElementById('prog').style.width=pct+'%';
+  
+  const tag=document.getElementById('author-tag');
+  tag.textContent='Aula '+q.a;
+  tag.style.cssText=pt.tagColors[q.a]||'';
+  document.getElementById('q-num-side').textContent=(current+1)+'/'+total;
+  document.getElementById('q-text').textContent=q.q;
+  const n=q.c.length;
+  document.getElementById('q-instr').textContent=
+    n===0?'Atenção: pode não haver nenhuma alternativa correta.':
+    n===1?'Selecione a alternativa correta e confirme.':
+    'Selecione todas as alternativas corretas (pode haver mais de uma) e confirme.';
+  
+  const opts=document.getElementById('opts');
+  opts.innerHTML='';
+  const accentStyle=`border-color:var(${pt.accentVar});background:var(${pt.accentLt});`;
+  q.opts.forEach((txt,i)=>{
+    const btn=document.createElement('button');
+    btn.className='opt';
+    btn.innerHTML=`<span class="ol">${'ABCD'[i]}</span><span>${txt}</span>`;
+    btn.dataset.idx=i;
+    btn.onclick=()=>toggleOpt(btn,i,accentStyle);
+    opts.appendChild(btn);
+  });
+  document.getElementById('feedback').className='feedback-box';
+  document.getElementById('feedback').innerHTML='';
+  document.getElementById('btn-confirm').className='btn-act show';
+  document.getElementById('btn-next').className='btn-act';
+  document.getElementById('btn-next').textContent=current<pool.length-1?'Próxima':'Ver resultado';
+}
+
+function toggleOpt(btn,idx,accentStyle){
+  if(confirmed)return;
+  if(selected.has(idx)){
+    selected.delete(idx);
+    btn.classList.remove('selected');
+    btn.style.cssText='';
+    btn.querySelector('.ol').style.cssText='';
+  } else {
+    selected.add(idx);
+    btn.classList.add('selected');
+  }
+}
+
+function confirmAnswer(){
+  if(confirmed)return;
+  confirmed=true;
+  const pt=PARTS[currentPart];
+  const q=pool[current];
+  const correct=new Set(q.c);
+  const isCorrect=setsEqual(selected,correct);
+  if(by[q.a]) by[q.a].tot++;
+  if(isCorrect){score++;if(by[q.a])by[q.a].ok++;}
+  document.querySelectorAll('#opts .opt').forEach(b=>{
+    const i=parseInt(b.dataset.idx);
+    b.disabled=true;
+    b.classList.remove('selected');
+    b.style.cssText='';
+    b.querySelector('.ol').style.cssText='';
+    if(correct.has(i)&&selected.has(i)) b.classList.add('correct');
+    else if(correct.has(i)&&!selected.has(i)) b.classList.add('reveal');
+    else if(!correct.has(i)&&selected.has(i)) b.classList.add('wrong');
+  });
+  const fb=document.getElementById('feedback');
+  fb.innerHTML=q.exp;
+  fb.className='feedback-box '+(isCorrect?'fb-ok':'fb-bad')+' show';
+  document.getElementById('score-top').textContent=score+' acerto'+(score!==1?'s':'');
+  document.getElementById('btn-confirm').className='btn-act';
+  document.getElementById('btn-next').className='btn-act show';
+}
+
+function setsEqual(a,b){if(a.size!==b.size)return false;for(let x of a)if(!b.has(x))return false;return true;}
+
+function nextQ(){
+  current++;
+  if(current>=pool.length){showResult();return;}
+  renderQ();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showResult(){
+  const pt=PARTS[currentPart];
+  showScreen('result-screen');
+  const total=pool.length,pct=Math.round((score/total)*100);
+  document.getElementById('r-num').textContent=score;
+  document.getElementById('r-den').textContent='de '+total;
+  
+  document.getElementById('result-card').style.setProperty('--grad',pt.gradBtn);
+  document.querySelector('.result-card::before');
+    document.getElementById('result-card').style.setProperty('border-top-color', 'transparent');
+  
+  const sc=document.getElementById('score-circle');
+  if(pct>=80){sc.style.background='linear-gradient(135deg,#f0fdf4,#dcfce7)';sc.style.borderColor='#4ade80';document.getElementById('r-num').style.color='#059669';}
+  else if(pct>=60){sc.style.background='linear-gradient(135deg,#fef9ee,#fef3c7)';sc.style.borderColor='#fbbf24';document.getElementById('r-num').style.color='#92400e';}
+  else{sc.style.background='';sc.style.borderColor='#f4a07a';document.getElementById('r-num').style.color='var('+pt.accentVar+')';}
+  const labels=[[90,'Excelente! Domínio sólido dos textos.'],[75,'Muito bom! Revise os pontos que erraste.'],[60,'Razoável. Vale reler as seções críticas.'],[0,'Precisas reler o material com mais atenção.']];
+  const e=labels.find(([t])=>pct>=t);
+  document.getElementById('r-title').textContent=e[1];
+  document.getElementById('r-sub').textContent=pct+'% de aproveitamento';
+  document.getElementById('r-ok').textContent=score;
+  document.getElementById('r-err').textContent=total-score;
+  document.getElementById('r-pct').textContent=pct+'%';
+  
+  const barColors=['#0d6e6e','#2a7a2a','#7a5c00','#8b1a4a','#6a3a00','#3a2a8a','#5a1a6a'];
+  const brows=document.getElementById('brows');
+  brows.innerHTML='';
+  pt.aulas.forEach(a=>{
+    const d=by[a];if(!d||!d.tot)return;
+    const p=Math.round((d.ok/d.tot)*100);
+    const color=barColors[parseInt(a)-1];
+    const row=document.createElement('div');
+    row.className='brow';
+    row.innerHTML=`<span class="brow-label">Aula ${a}</span><div class="brow-track"><div class="brow-bar" id="bb-${a}" style="background:${color}"></div></div><span class="brow-pct">${p}%</span>`;
+    brows.appendChild(row);
+    setTimeout(()=>{document.getElementById('bb-'+a).style.width=p+'%';},100);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function restart(){
+  showScreen('start-screen');
+  renderPartUI();
+}
+
+function showScreen(id){
+  ['start-screen','quiz-screen','result-screen'].forEach(s=>{
+    document.getElementById(s).style.display=s===id?'block':'none';
+  });
+}
+
+
+goToPart(1);
+
+</script>
+</body>
+</html>
